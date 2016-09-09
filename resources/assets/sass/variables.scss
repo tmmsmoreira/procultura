@@ -8,6 +8,9 @@ $list-group-border: $laravel-border-color;
 $navbar-default-border: $laravel-border-color;
 $panel-default-border: $laravel-border-color;
 $panel-inner-border: $laravel-border-color;
+$border-radius-base: 0 !default;
+$border-radius-large: 0 !default;
+$border-radius-small: 0 !default;
 
 // Brands
 $brand-primary: #B20000;//#3097D1;
@@ -24,6 +27,7 @@ $text-color: #636b6f;
 
 // Navbar
 $navbar-default-bg: #fff;
+$navbar-height: 65px !default;
 
 // Buttons
 $btn-default-color: $text-color;

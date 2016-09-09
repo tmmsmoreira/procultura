@@ -1,3 +1,5 @@
+@include('footer')
+
 @extends('layout')
 
 @section('content')
@@ -55,16 +57,20 @@
                     <div class="fig-hover-item" style="background-image:url(images/job1.jpg);">
                         <a href="" class="full-link"></a>
                         <div class="fig-hover-item-content text-center">
-                          <div class="overlay">
-                              <div class="overlay-color"></div>
-                              <div class="overlay-content">
-                                  <h3>Job 1</h3>
-                                  <h4>Lisboa</h4>
-                                  View project
-                              </div>
-                              <a href="" class="full-link"></a>
-                          </div>
-                      </div>
+                            <div class="overlay">
+                                <div class="overlay-color"></div>
+                                <div class="overlay-content">
+                                    <div class="vertical-center" style="height:100%">
+                                        <div class="centered">
+                                            <h3>Job 1</h3>
+                                            <h4>Lisboa</h4>
+                                            View project
+                                        </div>
+                                    </div>
+                                </div>
+                                <a href="" class="full-link"></a>
+                            </div>
+                        </div>
                     </div>
                 </div><!-- /.col-lg-4 -->
                 <div class="col-lg-4">
@@ -72,31 +78,39 @@
                         <a href="" class="full-link"></a>
                         <div class="fig-hover-item-content text-center">
                             <div class="overlay">
-                              <div class="overlay-color"></div>
-                              <div class="overlay-content">
-                                  <h3>Job 1</h3>
-                                  <h4>Lisboa</h4>
-                                  View project
-                              </div>
-                              <a href="" class="full-link"></a>
-                          </div>
-                      </div>
+                                <div class="overlay-color"></div>
+                                <div class="overlay-content">
+                                    <div class="vertical-center" style="height:100%">
+                                        <div class="centered">
+                                            <h3>Job 1</h3>
+                                            <h4>Lisboa</h4>
+                                            View project
+                                        </div>
+                                    </div>
+                                </div>
+                                <a href="" class="full-link"></a>
+                            </div>
+                        </div>
                     </div>
                 </div><!-- /.col-lg-4 -->
                 <div class="col-lg-4">
                     <div class="fig-hover-item" style="background-image:url(images/job3.jpg);">
                         <a href="" class="full-link"></a>
                         <div class="fig-hover-item-content text-center">
-                          <div class="overlay">
-                              <div class="overlay-color"></div>
-                              <div class="overlay-content">
-                                  <h3>Job 1</h3>
-                                  <h4>Lisboa</h4>
-                                  View project
-                              </div>
-                              <a href="" class="full-link"></a>
-                          </div>
-                      </div>
+                            <div class="overlay">
+                                <div class="overlay-color"></div>
+                                <div class="overlay-content">
+                                    <div class="vertical-center" style="height:100%">
+                                        <div class="centered">
+                                            <h3>Job 1</h3>
+                                            <h4>Lisboa</h4>
+                                            View project
+                                        </div>
+                                    </div>
+                                </div>
+                                <a href="" class="full-link"></a>
+                            </div>
+                        </div>
                     </div>
                 </div><!-- /.col-lg-4 -->
             </div><!-- /.row -->
@@ -130,9 +144,13 @@
                             <div class="overlay img-circle">
                                 <div class="overlay-color img-circle"></div>
                                 <div class="overlay-content">
-                                    <h3>Job 1</h3>
-                                    <h4>Lisboa</h4>
-                                    View project
+                                    <div class="vertical-center" style="height:100%">
+                                        <div class="centered">
+                                            <h3>Job 1</h3>
+                                            <h4>Lisboa</h4>
+                                            View project
+                                        </div>
+                                    </div>
                                 </div>
                                 <a href="" class="full-link"></a>
                             </div>
@@ -146,9 +164,13 @@
                             <div class="overlay img-circle">
                                 <div class="overlay-color img-circle"></div>
                                 <div class="overlay-content">
-                                    <h3>Job 1</h3>
-                                    <h4>Lisboa</h4>
-                                    View project
+                                    <div class="vertical-center" style="height:100%">
+                                        <div class="centered">
+                                            <h3>Job 1</h3>
+                                            <h4>Lisboa</h4>
+                                            View project
+                                        </div>
+                                    </div>
                                 </div>
                                 <a href="" class="full-link"></a>
                             </div>
@@ -162,9 +184,13 @@
                             <div class="overlay img-circle">
                                 <div class="overlay-color img-circle"></div>
                                 <div class="overlay-content">
-                                    <h3>Job 1</h3>
-                                    <h4>Lisboa</h4>
-                                    View project
+                                    <div class="vertical-center" style="height:100%">
+                                        <div class="centered">
+                                            <h3>Job 1</h3>
+                                            <h4>Lisboa</h4>
+                                            View project
+                                        </div>
+                                    </div>
                                 </div>
                                 <a href="" class="full-link"></a>
                             </div>
@@ -194,9 +220,24 @@
 
             </div>
         </div>
+        <div style="position:absolute;width:100%;bottom:0;background:black;">
+            <div class="container" style="height:100%">
+                <form class="form-inline" style="padding:10px">
+                    <div class="form-group form-group-lg">
+                        <p class="form-control-static" style="color:white">Subscreva a nossa newsletter e receba novidades no seu email uma vez por semana!</p>
+                    </div>
+                    <div class="pull-right">
+                        <div class="form-group form-group-lg">
+                            <input type="email" class="form-control" id="email" placeholder="Insira do seu email">
+                        </div>
+                        <button type="submit" class="btn btn-lg">Subscrever</button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </section>
-    <footer class="panel-footer" style="height: 200px">
 
-    </footer>
+    @yield('footer')
+
 </div>
 @stop

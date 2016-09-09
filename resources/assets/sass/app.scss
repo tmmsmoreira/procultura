@@ -165,3 +165,19 @@ html, body {
     display: inline-block;
     vertical-align: middle;
  }
+.social-network {
+    height: 38px;
+    width: 38px;
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-image: url(../imgs/social.png);
+}
+.social-network.fb {
+    background-position: 0 0;
+}
+.social-network.tw {
+    background-position: -38px 0;
+}
+footer {
+    color: white;
+}
