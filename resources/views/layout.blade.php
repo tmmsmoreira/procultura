@@ -30,7 +30,7 @@
                         <li><a class="text-uppercase" href="#contact">Formação</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                    	<li><a class="text-uppercase" href="#login">Login</a></li>
+                    	<li><a class="text-uppercase" href="login">Login</a></li>
                     </ul>
     			</div><!--/.nav-collapse -->
             </div>
