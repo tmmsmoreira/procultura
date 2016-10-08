@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateEmploymentsTable extends Migration
+class CreateProfilesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,11 @@ class CreateEmploymentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('employments', function (Blueprint $table) {
+        Schema::create('profiles', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->string('description');
-            $table->string('locality');
-            $table->integer('user_id')->unsigned()->index();
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->string('key')->unique();
             $table->timestamps();
         });
     }
@@ -31,6 +29,6 @@ class CreateEmploymentsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('employments');
+        Schema::drop('profiles');
     }
 }

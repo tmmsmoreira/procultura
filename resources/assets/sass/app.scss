@@ -126,7 +126,7 @@ html, body {
     line-height: normal;
     width: 100%;
     background-repeat: no-repeat;
-    backgroun-position: center center;
+    background-position: center center;
 }
 .fig-hover-item > .full-link {
     z-index: 1;
@@ -154,6 +154,7 @@ html, body {
 }
 .vertical-center {
     text-align: center;
+    font-size: 0px;
 }
 .vertical-center:before {
     content: '\200B';

@@ -6,6 +6,7 @@ use App\User;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Crypt;
 
 class RegisterController extends Controller
 {
@@ -27,7 +28,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/myhome';
 
     /**
      * Create a new controller instance.
@@ -47,11 +48,33 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        return Validator::make($data, [
-            'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|min:6|confirmed',
-        ]);
+        $profile_key = Crypt::decrypt($data['profile_key']);
+
+        switch($profile_key)
+        {
+            case "companies":
+                return Validator::make($data, [
+                    'email' => 'required|email|max:255|unique:users',
+                    'password' => 'required|min:6|confirmed',
+                    'name' => 'required|max:255',
+                    'website' => 'required|max:255',
+                    'activity' => 'required|max:255',
+                    'localy' => 'required|max:255',
+                ]);
+            case "freelancers":
+                return Validator::make($data, [
+                    'name' => 'required|max:255',
+                    'email' => 'required|email|max:255|unique:users',
+                    'password' => 'required|min:6|confirmed',
+                ]);
+            case "general":
+                return Validator::make($data, [
+                    'name' => 'required|max:255',
+                    'email' => 'required|email|max:255|unique:users',
+                    'password' => 'required|min:6|confirmed',
+                ]);
+        }
+
     }
 
     /**
@@ -62,10 +85,35 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
-        ]);
+        $profile_key = Crypt::decrypt($data['profile_key']);
+
+        switch($profile_key)
+        {
+            case "companies":
+                return User::create([
+                    'email' => $data['email'],
+                    'password' => bcrypt($data['password']),
+                    'name' => $data['name'],
+                    'website' =>  $data['website'],
+                    'activity' => $data['activity'],
+                    'localy' => $data['localy'],
+                    'is_admin' => 0,
+                    'profile_id' => 0,
+                ]);
+            case "freelancers":
+                return User::create([
+                    'name' => $data['name'],
+                    'email' => $data['email'],
+                    'password' => bcrypt($data['password']),
+                    'is_admin' => 0,
+                ]);
+            case "general":
+                return User::create([
+                    'name' => $data['name'],
+                    'email' => $data['email'],
+                    'password' => bcrypt($data['password']),
+                    'is_admin' => 0,
+                ]);
+        }
     }
 }

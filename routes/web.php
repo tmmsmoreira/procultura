@@ -18,3 +18,6 @@ Route::get('images/{filename}','PagesController@uploadedImages');
 // Admin
 Route::get('admin', 'AdminController@home');
 Route::get('admin/login', 'AdminController@login');
+
+Auth::routes();
+Route::get('profiles', 'ProfilesControler@index');
