@@ -1,6 +1,6 @@
 @include('footer')
 
-@extends('layout')
+@extends('layouts.main')
 
 @section('content')
 <div id="home" class="site-wrapper">

@@ -97,7 +97,6 @@ class RegisterController extends Controller
                     'website' =>  $data['website'],
                     'activity' => $data['activity'],
                     'localy' => $data['localy'],
-                    'is_admin' => 0,
                     'profile_id' => 0,
                 ]);
             case "freelancers":
@@ -105,14 +104,12 @@ class RegisterController extends Controller
                     'name' => $data['name'],
                     'email' => $data['email'],
                     'password' => bcrypt($data['password']),
-                    'is_admin' => 0,
                 ]);
             case "general":
                 return User::create([
                     'name' => $data['name'],
                     'email' => $data['email'],
                     'password' => bcrypt($data['password']),
-                    'is_admin' => 0,
                 ]);
         }
     }

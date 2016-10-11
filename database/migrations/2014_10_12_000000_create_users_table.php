@@ -23,7 +23,7 @@ class CreateUsersTable extends Migration
             $table->string('activity');
             $table->string('localy');
             $table->string('interests')->nullable();
-            $table->boolean('is_admin');
+            $table->boolean('is_admin')->default(0);
             $table->rememberToken();
             $table->timestamps();
         });
