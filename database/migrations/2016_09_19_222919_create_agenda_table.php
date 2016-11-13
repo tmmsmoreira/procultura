@@ -18,7 +18,8 @@ class CreateAgendaTable extends Migration
             $table->string('title');
             $table->string('description', 1000);
             $table->string('location');
-            $table->datetime('datetime');
+            $table->datetime('start_datetime');
+            $table->datetime('end_datetime');
             $table->string('image');
             $table->timestamps();
         });

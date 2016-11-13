@@ -35,9 +35,4 @@ class User extends Authenticatable
     {
         return $this->is_admin; // this looks for an admin column in your users table
     }
-
-    public function getProfileKey()
-    {
-        //return $this->is_admin; // this looks for an admin column in your users table
-    }
 }

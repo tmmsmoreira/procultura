@@ -17,13 +17,14 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('email')->unique();
-            $table->string('profile_id');
             $table->string('password');
             $table->string('website');
             $table->string('activity');
             $table->string('localy');
             $table->string('interests')->nullable();
             $table->boolean('is_admin')->default(0);
+            $table->integer('profile_id')->unsigned()->index();
+            $table->foreign('profile_id')->references('id')->on('profiles');
             $table->rememberToken();
             $table->timestamps();
         });

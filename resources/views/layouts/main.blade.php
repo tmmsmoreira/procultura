@@ -7,7 +7,7 @@
 
         <title>ProCultura</title>
 
-        <link href="css/app.css" rel="stylesheet" type="text/css">
+        <link href="/css/app.css" rel="stylesheet" type="text/css">
         <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
     </head>
     <body>
@@ -21,7 +21,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="home"><img height="100%" alt="ProCultura" src="imgs/logo.png"></a>
+                    <a class="navbar-brand" href="home"><img height="100%" alt="ProCultura" src="/imgs/logo.png"></a>
                 </div>
     			<div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
