@@ -260,7 +260,7 @@ desired effect
             <li class=""><a href="/admin/users"><i class="fa fa-link"></i> <span>Utilizadores</span></a></li>
             <li class="header text-uppercase">Páginas</li>
             <li><a href="/admin/agenda"><i class="fa fa-link"></i> <span>Agenda Cultural</span></a></li>
-            <li><a href="/admin/jobs"><i class="fa fa-link"></i> <span>Empregos</span></a></li>
+            <li><a href="/admin/employments"><i class="fa fa-link"></i> <span>Empregos</span></a></li>
             <li><a href="/admin/training"><i class="fa fa-link"></i> <span>Formações</span></a></li>
             <li><a href="/admin/services"><i class="fa fa-link"></i> <span>Serviços</span></a></li>
             <li><a href="/admin/studies"><i class="fa fa-link"></i> <span>Estudos</span></a></li>
