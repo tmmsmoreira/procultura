@@ -18,5 +18,5 @@ require('laravel-elixir-vue');
     mix.sass('app.scss')
         .sass('admin.scss')
         .copy(bootstrapPath + '/fonts', 'public/fonts')
-        /*.webpack('app.js')*/;
+        .webpack('app.js');
  });

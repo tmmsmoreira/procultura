@@ -256,14 +256,14 @@ desired effect
         <ul class="sidebar-menu">
             <li class="header text-uppercase">Estado do Site</li>
             <!-- Optionally, you can add icons to the links -->
-            <li class="active"><a href="/admin"><i class="fa fa-link"></i> <span>Vista Geral</span></a></li>
-            <li class=""><a href="/admin/users"><i class="fa fa-link"></i> <span>Utilizadores</span></a></li>
+            <li class="active"><a href="{{ url('/admin') }}"><i class="fa fa-link"></i> <span>Vista Geral</span></a></li>
+            <li class=""><a href="{{ url('/admin/users') }}"><i class="fa fa-link"></i> <span>Utilizadores</span></a></li>
             <li class="header text-uppercase">Páginas</li>
-            <li><a href="/admin/agenda"><i class="fa fa-link"></i> <span>Agenda Cultural</span></a></li>
-            <li><a href="/admin/employments"><i class="fa fa-link"></i> <span>Empregos</span></a></li>
-            <li><a href="/admin/training"><i class="fa fa-link"></i> <span>Formações</span></a></li>
-            <li><a href="/admin/services"><i class="fa fa-link"></i> <span>Serviços</span></a></li>
-            <li><a href="/admin/studies"><i class="fa fa-link"></i> <span>Estudos</span></a></li>
+            <li><a href="{{ url('/admin/events') }}"><i class="fa fa-link"></i> <span>Agenda Cultural</span></a></li>
+            <li><a href="{{ url('/admin/employments') }}"><i class="fa fa-link"></i> <span>Empregos</span></a></li>
+            <li><a href="{{ url('/admin/training') }}"><i class="fa fa-link"></i> <span>Formações</span></a></li>
+            <li><a href="{{ url('/admin/services') }}"><i class="fa fa-link"></i> <span>Serviços</span></a></li>
+            <li><a href="{{ url('/admin/studies') }}"><i class="fa fa-link"></i> <span>Estudos</span></a></li>
             <!--<li class="treeview">
                 <a href="#"><i class="fa fa-link"></i> <span>Páginas</span>
                     <span class="pull-right-container">

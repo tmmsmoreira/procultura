@@ -2,20 +2,20 @@
 
 @section('required-css-files')
 <!-- DataTables -->
-<link rel="stylesheet" href="/plugins/datatables/dataTables.bootstrap.css">
+<link rel="stylesheet" href="/plugins/datatables/dataTables.min.css">
 @stop
 
 @section('content')
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <h1>
-        Adicionar Evento
-        <small>Gestão da agenda cultural</small>
+        Empregos
+        <small>Gestão de vagas de emprego</small>
     </h1>
     <ol class="breadcrumb">
         <li><a href="/admin"><i class="fa fa-dashboard"></i> Home</a></li>
         <li>Páginas</li>
-        <li class="active">Agenda Cultural</li>
+        <li class="active">Empregos</li>
     </ol>
 </section>
 
@@ -29,24 +29,24 @@
                     <table id="agenda-list" class="table table-striped table-bordered table-hover">
                         <thead>
                             <tr>
-                                <th>Título</th>
+                                <th>Nome</th>
                                 <th>Localização</th>
-                                <th>Data e Hora</th>
+                                <th>Criado em</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($agenda as $event)
+                            @foreach($employments as $employment)
                             <tr>
-                                <td>{{ $event->title }}</td>
-                                <td>{{ $event->location }}</td>
-                                <td>{{ $event->datetime }}</td>
+                                <td>{{ $employment->name }}</td>
+                                <td>{{ $employment->localy }}</td>
+                                <td>{{ $employment->created_at }}</td>
                             </tr>
                             @endforeach
                         </tbody>
                     </table>
                 </div>
                 <div class="box-footer">
-                    <a href="agenda/create" class="btn btn-info" role="button">Adicionar Evento</a>
+                    <a href="agenda/create" class="btn btn-info" role="button">Adicionar</a>
                 </div>
             </div>
         </div>
@@ -57,8 +57,7 @@
 
 @section('required-js-scripts')
 <!-- DataTables -->
-<script src="/plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="/plugins/datatables/dataTables.bootstrap.min.js"></script>
+<script src="/plugins/datatables/dataTables.min.js"></script>
 @stop
 
 @section('page-script')

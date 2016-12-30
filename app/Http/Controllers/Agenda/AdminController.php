@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Agenda;
+use App\Event;
+use Carbon\Carbon;
 
 class AdminController extends Controller
 {
@@ -17,9 +18,9 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $agenda = Agenda::getAllEvents();
+        $events = Event::all();
 
-        return view('admin/agenda/list', compact('agenda'));
+        return view('admin/events/index', compact('events'));
     }
 
     /**
@@ -29,7 +30,7 @@ class AdminController extends Controller
      */
     public function create()
     {
-        return view('admin/agenda/create');
+        return view('admin/events/create');
     }
 
     /**
@@ -40,6 +41,25 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
+        $event = new Event;
+
+        $this->validate($request, [
+            'title' => 'required|string|max:200',
+            'description' => 'required|string|max:600',
+            'location' => 'required|string',
+            'datetime' => 'required|datetime_interval'
+        ]);
+
+        $datetimes_arr = explode(" / ", $request->datetime);
+
+        $event->title = $request->title;
+        $event->description = $request->description;
+        $event->location = $request->location;
+        $event->start_datetime = Carbon::createFromFormat('d-m-Y H:i', $datetimes_arr[0]);
+        $event->end_datetime = Carbon::createFromFormat('d-m-Y H:i', $datetimes_arr[1]);
+        $event->image = "";
+        $event->save();
+
         return $request->all();
     }
 
@@ -62,7 +82,10 @@ class AdminController extends Controller
      */
     public function edit($id)
     {
-        //
+        // get the nerd
+        $event = Event::find($id);
+
+        return view('admin/events/edit', compact('event'));
     }
 
     /**
@@ -74,7 +97,26 @@ class AdminController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'title' => 'required|string|max:200',
+            'description' => 'required|string|max:600',
+            'location' => 'required|string',
+            'datetime' => 'required|datetime_interval'
+        ]);
+
+        $event = Event::find($id);
+
+        $datetimes_arr = explode(" / ", $request->datetime);
+
+        $event->title = $request->title;
+        $event->description = $request->description;
+        $event->location = $request->location;
+        $event->start_datetime = Carbon::createFromFormat('d-m-Y H:i', $datetimes_arr[0]);
+        $event->end_datetime = Carbon::createFromFormat('d-m-Y H:i', $datetimes_arr[1]);
+        $event->image = "";
+        $event->save();
+        
+        return redirect('admin/events')->with('status', 'Event updated!');
     }
 
     /**

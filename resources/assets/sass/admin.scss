@@ -12,3 +12,12 @@
 
 // AdminLTE Skin
 @import "admin/skin.scss";
+
+.checkbox-column {
+    width: 20px !important;
+    text-align: center;
+}
+
+.dataTable tbody tr {
+    cursor: pointer;
+}

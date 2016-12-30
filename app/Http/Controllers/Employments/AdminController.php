@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Agenda;
+namespace App\Http\Controllers\Employments;
 
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Agenda;
+use App\Employment;
 
 class AdminController extends Controller
 {
@@ -17,7 +17,7 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $employments = Employment::getAllEvents();
+        $employments = Employment::all();
 
         return view('admin/employments/list', compact('employments'));
     }

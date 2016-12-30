@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Agenda;
+use App\Event;
 
 class SiteController extends Controller
 {
@@ -17,9 +17,9 @@ class SiteController extends Controller
      */
     public function index()
     {
-        $agenda = Agenda::getAllEvents();
+        $events = Event::getAllEvents();
 
-        return view('agenda', compact('agenda'));
+        return view('agenda', compact('events'));
     }
 
     /**

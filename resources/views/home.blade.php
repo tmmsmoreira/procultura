@@ -53,7 +53,7 @@
                 <p class="h1 section-title">Emprego</p>
             </div>
             <div class="row">
-                <div class="col-lg-4">
+                <div class="col-sm-4">
                     <div class="fig-hover-item" style="background-image:url(images/job1.jpg);">
                         <a href="" class="full-link"></a>
                         <div class="fig-hover-item-content text-center">
@@ -73,7 +73,7 @@
                         </div>
                     </div>
                 </div><!-- /.col-lg-4 -->
-                <div class="col-lg-4">
+                <div class="col-sm-4">
                     <div class="fig-hover-item" style="background-image:url(images/job2.jpg);">
                         <a href="" class="full-link"></a>
                         <div class="fig-hover-item-content text-center">
@@ -93,7 +93,7 @@
                         </div>
                     </div>
                 </div><!-- /.col-lg-4 -->
-                <div class="col-lg-4">
+                <div class="col-sm-4">
                     <div class="fig-hover-item" style="background-image:url(images/job3.jpg);">
                         <a href="" class="full-link"></a>
                         <div class="fig-hover-item-content text-center">
@@ -137,7 +137,7 @@
                 <p class="h1 section-title white">Formação</p>
             </div>
             <div class="row">
-                <div class="col-lg-4">
+                <div class="col-sm-4">
                     <div class="fig-hover-item img-circle" style="background-image:url(images/job1.jpg);">
                         <a href="" class="full-link"></a>
                         <div class="fig-hover-item-content text-center">
@@ -157,7 +157,7 @@
                         </div>
                     </div>
                 </div><!-- /.col-lg-4 -->
-                <div class="col-lg-4">
+                <div class="col-sm-4">
                     <div class="fig-hover-item img-circle" style="background-image:url(images/job2.jpg);">
                         <a href="" class="full-link"></a>
                         <div class="fig-hover-item-content text-center">
@@ -177,7 +177,7 @@
                         </div>
                     </div>
                 </div><!-- /.col-lg-4 -->
-                <div class="col-lg-4">
+                <div class="col-sm-4">
                     <div class="fig-hover-item img-circle" style="background-image:url(images/job3.jpg);">
                         <a href="" class="full-link"></a>
                         <div class="fig-hover-item-content text-center">
@@ -222,7 +222,8 @@
         </div>
         <div style="position:absolute;width:100%;bottom:0;background:black;">
             <div class="container" style="height:100%">
-                <form class="form-inline" style="padding:10px">
+                <form class="form-inline" method="POST" id="subscribe" style="padding:10px">
+                    {!! csrf_field() !!}
                     <div class="form-group form-group-lg">
                         <p class="form-control-static" style="color:white">Subscreva a nossa newsletter e receba novidades no seu email uma vez por semana!</p>
                     </div>
@@ -233,6 +234,13 @@
                         <button type="submit" class="btn btn-lg">Subscrever</button>
                     </div>
                 </form>
+                <div class="modal fade" id="subscribe_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header"></div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
