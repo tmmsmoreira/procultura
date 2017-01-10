@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use File;
+
 class PagesController extends Controller
 {
     public function soon()
@@ -16,16 +18,18 @@ class PagesController extends Controller
 
     public function uploadedImages($filename)
     {
-        $path = storage_path() . '/uploads/images/' . $filename;
+        return Image::make(storage_path() . '/uploads/' . $filename)->response();
+        
+        /*$path = storage_path() . '/uploads/' . $filename;
 
-        if(!\File::exists($path)) abort(404);
+        if(!File::exists($path)) abort(404);
 
-        $file = \File::get($path);
-        $type = \File::mimeType($path);
+        $file = File::get($path);
+        $type = File::mimeType($path);
 
-        $response = \Response::make($file, 200);
+        $response = Response::make($file, 200);
         $response->header("Content-Type", $type);
 
-        return $response;
+        return $response;*/
     }
 }

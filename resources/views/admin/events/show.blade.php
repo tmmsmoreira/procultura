@@ -1,4 +1,5 @@
 @extends('admin.layouts.main')
+@include('commons.deletePopup')
 
 @section('required-css-files')
 <!-- daterange picker -->
@@ -9,14 +10,14 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <h1>
-        Adicionar Evento
+        {{ $event->title }}
         <small></small>
     </h1>
     <ol class="breadcrumb">
-        <li><a href="/admin"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="{{ route('admin') }}"><i class="fa fa-dashboard"></i> Home</a></li>
         <li>Páginas</li>
-        <li>Agenda Cultural</li>
-        <li class="active">Adicionar Evento</li>
+        <li><a href="{{ route('events.index') }}">Agenda Cultural</a></li>
+        <li class="active">{{ $event->title }}</li>
     </ol>
 </section>
 
@@ -28,51 +29,55 @@
             <div class="box">
                 <div class="box-body">
                     <div class="form-group">
-                        <label for="titleInput">Título</label>
-                        <input type="text" class="form-control" id="titleInput" name="title" placeholder="Introduza o título"/>
-                    </div>
-                    <div class="form-group">
                         <label for="descriptionTextarea">Descrição</label>
-                        <textarea class="form-control" rows=3 id="descriptionTextarea" name="description" placeholder="Introduza uma descrição"/></textarea>
+                        <span class="form-control" id="descriptionTextarea">{{ $event->description }}</span>
                     </div>
                     <div class="form-group">
                         <label for="locationInput">Localização</label>
-                        <input type="text" class="form-control" id="locationInput" name="location" placeholder="Introduza a localização"/>
+                        <span class="form-control" id="locationInput">{{ $event->location }}</span>
                     </div>
                     <div class="form-group">
-                        <label>Data de inicio e de fim:</label>
-                        <div class="input-group">
-                            <div class="input-group-addon">
-                                <i class="fa fa-clock-o"></i>
-                            </div>
-                            <input type="text" class="form-control pull-right" id="datetime" name="datetime">
-                        </div>
+                        <label for="datetime">Data de inicio e de fim:</label>
+                        <span class="form-control" id="datetime">{{ $event->start_datetime->format('d-m-Y H:i') . " / " . $event->end_datetime->format('d-m-Y H:i') }}</span>
                     </div>
                     <div class="form-group">
                         <label for="imageUpload">Imagem</label>
-                        <input type="file" id="imageUpload" name="image" />
-                        <p class="help-block">Example block-level help text here.</p>
+                        <div class="container-fluid">
+                            <div class="row">
+                                <img width="50%" src="{{ asset('storage/' . $event->image) }}" />
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="box-footer">
-                    <button type="submit" class="btn btn-info" role="button">Adicionar</a>
+                    <a href="{{ route('events.edit', $event->id) }}" class="btn btn-warning" id="edit_button">Editar</a>
+                    <button type="button" class="btn btn-danger" data-toggle="modal"
+                        data-target="#delete_modal" data-link="{{ route('events.destroy', $event->id) }}">Delete</button>
+                    <a href="{{ route('events.index') }}" class="btn btn-default">Cancelar</a>
                 </div>
             </div>
         </div>
     </div>
 </section>
+
+@yield('delete_popup')
+
 <!-- /.content -->
 @stop
 
 @section('required-js-scripts')
-<!-- date-range-picker -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
-<script src="/plugins/daterangepicker/daterangepicker.js"></script>
+
 @stop
 
 @section('page-script')
 <!-- page script -->
 <script>
+$('#delete_modal').on('show.bs.modal', function (event) {
+    var button = $(event.relatedTarget),
+        link = button.data('link')
+        modal = $(this);
 
+    modal.find('#delete_form').attr("action", link);
+});
 </script>
 @stop

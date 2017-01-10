@@ -3,14 +3,18 @@
 namespace App\Http\Controllers\Agenda;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Event;
 use Carbon\Carbon;
+use Image;
 
 class AdminController extends Controller
 {
+    protected $storage_path = "uploads/";
+
     /**
      * Display a listing of the resource.
      *
@@ -47,7 +51,8 @@ class AdminController extends Controller
             'title' => 'required|string|max:200',
             'description' => 'required|string|max:600',
             'location' => 'required|string',
-            'datetime' => 'required|datetime_interval'
+            'datetime' => 'required|datetime_interval',
+            'image' => 'required|image|max:5000|dimensions:min_width=1920,min_height=1080'
         ]);
 
         $datetimes_arr = explode(" / ", $request->datetime);
@@ -57,10 +62,19 @@ class AdminController extends Controller
         $event->location = $request->location;
         $event->start_datetime = Carbon::createFromFormat('d-m-Y H:i', $datetimes_arr[0]);
         $event->end_datetime = Carbon::createFromFormat('d-m-Y H:i', $datetimes_arr[1]);
-        $event->image = "";
+        $event->image = "agenda/" . Carbon::now()->format('dmY_His') . "_" . str_random(20) . ".jpg";
+
+        $new_img = Image::make($request->file("image"))->resize(1920, null, function($constraint) {
+            $constraint->aspectRatio();
+            $constraint->upsize();
+        })->encode("jpg");
+
+        Storage::put($this->storage_path . $event->image, $new_img);
+
         $event->save();
 
-        return $request->all();
+        //return $request->all();
+        return redirect('admin/events')->with('status', 'Event updated!');
     }
 
     /**
@@ -71,7 +85,9 @@ class AdminController extends Controller
      */
     public function show($id)
     {
-        //
+        $event = Event::find($id);
+
+        return view('admin/events/show', compact('event'));
     }
 
     /**
@@ -82,7 +98,6 @@ class AdminController extends Controller
      */
     public function edit($id)
     {
-        // get the nerd
         $event = Event::find($id);
 
         return view('admin/events/edit', compact('event'));
@@ -101,7 +116,8 @@ class AdminController extends Controller
             'title' => 'required|string|max:200',
             'description' => 'required|string|max:600',
             'location' => 'required|string',
-            'datetime' => 'required|datetime_interval'
+            'datetime' => 'required|datetime_interval',
+            'image' => 'required|image|max:5000|dimensions:min_width=1920,min_height=1080'
         ]);
 
         $event = Event::find($id);
@@ -113,9 +129,26 @@ class AdminController extends Controller
         $event->location = $request->location;
         $event->start_datetime = Carbon::createFromFormat('d-m-Y H:i', $datetimes_arr[0]);
         $event->end_datetime = Carbon::createFromFormat('d-m-Y H:i', $datetimes_arr[1]);
-        $event->image = "";
+
+        if ($request->hasFile("image")) {
+            $ext = pathinfo(storage_path($this->storage_path . $event->image), PATHINFO_EXTENSION);
+
+            if (Storage::exists($this->storage_path . $event->image)) {
+                Storage::delete($this->storage_path . $event->image);
+            }
+
+            $event->image = "agenda/" . Carbon::now()->format('dmY_His') . "_" . str_random(20) . ".jpg";
+
+            $new_img = Image::make($request->file("image"))->resize(1920, null, function($constraint) {
+                $constraint->aspectRatio();
+                $constraint->upsize();
+            })->encode("jpg");
+
+            Storage::put($this->storage_path . $event->image, $new_img);
+        }
+
         $event->save();
-        
+
         return redirect('admin/events')->with('status', 'Event updated!');
     }
 
@@ -127,6 +160,8 @@ class AdminController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $event = Event::destroy($id);
+
+        return redirect('admin/events')->with('status', 'Event deleted!');
     }
 }

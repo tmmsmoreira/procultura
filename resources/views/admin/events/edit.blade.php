@@ -13,9 +13,9 @@
         <small></small>
     </h1>
     <ol class="breadcrumb">
-        <li><a href="{{ url('admin') }}"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="{{ route('admin') }}"><i class="fa fa-dashboard"></i> Home</a></li>
         <li>Páginas</li>
-        <li><a href="{{ url('events') }}">Agenda Cultural</a></li>
+        <li><a href="{{ route('events.index') }}">Agenda Cultural</a></li>
         <li class="active">Editar Evento</li>
     </ol>
 </section>
@@ -26,7 +26,17 @@
     <div class="row">
         <div class="col-xs-12">
             <div class="box">
-                <form role="form" method="POST" action="/admin/events/{{ $event->id }}">
+                @if (count($errors) > 0)
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+                <form role="form" method="POST" enctype="multipart/form-data"
+                        action="{{ route('events.update', ['id' => $event->id]) }}">
                     {{ method_field('PUT') }}
                     {{ csrf_field() }}
 
@@ -64,7 +74,7 @@
                     </div>
                     <div class="box-footer">
                         <button type="submit" class="btn btn-success" role="button">Actualizar</button>
-                        <a href="{{ url('admin/events') }}" class="btn btn-danger">Cancelar</a>
+                        <a href="{{ route('events.index') }}" class="btn btn-default">Cancelar</a>
                     </div>
                 </form>
             </div>

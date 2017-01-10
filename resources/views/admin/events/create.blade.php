@@ -26,6 +26,15 @@
     <div class="row">
         <div class="col-xs-12">
             <div class="box">
+                @if (count($errors) > 0)
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                 <form role="form" method="POST" action="/admin/events">
                     {{ csrf_field() }}
 
@@ -58,7 +67,8 @@
                         </div>
                     </div>
                     <div class="box-footer">
-                        <button type="submit" class="btn btn-info" role="button">Adicionar</a>
+                        <button type="submit" class="btn btn-info" role="button">Adicionar</button>
+                        <a href="/admin/events" class="btn btn-danger" id="cancel_button">Cancelar</a>
                     </div>
                 </form>
             </div>

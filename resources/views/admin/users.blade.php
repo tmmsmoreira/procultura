@@ -2,7 +2,7 @@
 
 @section('required-css-files')
 <!-- DataTables -->
-<link rel="stylesheet" href="/plugins/datatables/dataTables.bootstrap.css">
+<link rel="stylesheet" href="/plugins/datatables/datatables.min.css">
 @stop
 
 @section('content')
@@ -54,8 +54,7 @@
 
 @section('required-js-scripts')
 <!-- DataTables -->
-<script src="/plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="/plugins/datatables/dataTables.bootstrap.min.js"></script>
+<script src="/plugins/datatables/datatables.min.js"></script>
 @stop
 
 @section('page-script')
@@ -64,7 +63,7 @@
     $(function () {
         $('#users-list').DataTable({
             "language": {
-                "url": "/plugins/datatables/languages/pt-PT.json"
+                "url": "/plugins/datatables/_languages/pt-PT.json"
             }
         });
     });

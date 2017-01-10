@@ -2,7 +2,7 @@
 
 @section('required-css-files')
 <!-- DataTables -->
-<link rel="stylesheet" href="/plugins/datatables/dataTables.min.css">
+<link rel="stylesheet" href="/plugins/datatables/datatables.min.css">
 @stop
 
 @section('content')
@@ -13,7 +13,7 @@
         <small>Gestão de eventos</small>
     </h1>
     <ol class="breadcrumb">
-        <li><a href="/admin"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="{{ route('admin') }}"><i class="fa fa-dashboard"></i> Home</a></li>
         <li>Páginas</li>
         <li class="active">Agenda Cultural</li>
     </ol>
@@ -50,7 +50,7 @@
                     </table>
                 </div>
                 <div class="box-footer">
-                    <a href="events/create" class="btn btn-info" id="add_button" role="button">Adicionar</a>
+                    <a href="{{ route('events.create') }}" class="btn btn-info" id="add_button">Adicionar</a>
                     <button class="btn btn-warning" disabled id="edit_button" role="button">Editar</button>
                     <button class="btn btn-danger" disabled id="delete_button" role="button">Apagar</button>
                 </div>
@@ -63,7 +63,7 @@
 
 @section('required-js-scripts')
 <!-- DataTables -->
-<script src="/plugins/datatables/dataTables.min.js"></script>
+<script src="/plugins/datatables/datatables.min.js"></script>
 @stop
 
 @section('page-script')
@@ -85,7 +85,7 @@
                 selector: 'td:first-child input'
             },
             language: {
-                url: "/plugins/datatables/languages/pt-PT.json"
+                url: "/plugins/datatables/_languages/pt-PT.json"
             }
         });
 
@@ -111,12 +111,16 @@
         $('tbody tr').on('click', function(e) {
             var $cell = $(e.target).closest('td');
             if ($cell.index() > 0) {
-                window.location.pathname += "/" + $(this).attr("data-id") + "/show";
+                window.location.pathname += "/" + $(this).attr("data-id");
             }
         });
 
         $("#edit_button").on('click', function() {
             window.location.pathname += "/" + table.row( { selected: true } ).nodes().to$().attr("data-id") + "/edit";
+        });
+
+        $("#delete_button").on('click', function() {
+            window.location.pathname += "/" + table.row( { selected: true } ).nodes().to$().attr("data-id");
         });
 
         function updateDataTableSelectAllCtrl(table) {

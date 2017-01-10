@@ -2,7 +2,7 @@
 
 @section('required-css-files')
 <!-- DataTables -->
-<link rel="stylesheet" href="/plugins/datatables/dataTables.min.css">
+<link rel="stylesheet" href="/plugins/datatables/datatables.min.css">
 @stop
 
 @section('content')
@@ -13,7 +13,7 @@
         <small>Gestão de vagas de emprego</small>
     </h1>
     <ol class="breadcrumb">
-        <li><a href="/admin"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="{{ route('admin') }}"><i class="fa fa-dashboard"></i> Home</a></li>
         <li>Páginas</li>
         <li class="active">Empregos</li>
     </ol>
@@ -46,7 +46,7 @@
                     </table>
                 </div>
                 <div class="box-footer">
-                    <a href="agenda/create" class="btn btn-info" role="button">Adicionar</a>
+                    <a href="{{ route('employments.create') }}" class="btn btn-info" role="button">Adicionar</a>
                 </div>
             </div>
         </div>
@@ -57,7 +57,7 @@
 
 @section('required-js-scripts')
 <!-- DataTables -->
-<script src="/plugins/datatables/dataTables.min.js"></script>
+<script src="/plugins/datatables/datatables.min.js"></script>
 @stop
 
 @section('page-script')
@@ -66,7 +66,7 @@
     $(function () {
         $('#agenda-list').DataTable({
             "language": {
-                "url": "/plugins/datatables/languages/pt-PT.json"
+                "url": "/plugins/datatables/_languages/pt-PT.json"
             }
         });
     });
