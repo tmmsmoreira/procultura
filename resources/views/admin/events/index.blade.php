@@ -1,4 +1,5 @@
 @extends('admin.layouts.main')
+@include('commons.deletePopup')
 
 @section('required-css-files')
 <!-- DataTables -->
@@ -38,7 +39,7 @@
                         </thead>
                         <tbody>
                             @foreach($events as $event)
-                            <tr data-id="{{ $event->id }}">
+                            <tr id="row-{{ $event->id }}" data-id="{{ $event->id }}">
                                 <td></td>
                                 <td>{{ $event->title }}</td>
                                 <td>{{ $event->location }}</td>
@@ -52,12 +53,16 @@
                 <div class="box-footer">
                     <a href="{{ route('events.create') }}" class="btn btn-info" id="add_button">Adicionar</a>
                     <button class="btn btn-warning" disabled id="edit_button" role="button">Editar</button>
-                    <button class="btn btn-danger" disabled id="delete_button" role="button">Apagar</button>
+                    <button class="btn btn-danger" disabled id="delete_button" role="button" data-toggle="modal"
+                        data-target="#delete_modal" data-link="{{ url('/admin/events/delete') }}">Apagar</button>
                 </div>
             </div>
         </div>
     </div>
 </section>
+
+@yield('delete_popup')
+
 <!-- /.content -->
 @stop
 
@@ -119,11 +124,7 @@
             window.location.pathname += "/" + table.row( { selected: true } ).nodes().to$().attr("data-id") + "/edit";
         });
 
-        $("#delete_button").on('click', function() {
-            window.location.pathname += "/" + table.row( { selected: true } ).nodes().to$().attr("data-id");
-        });
-
-        function updateDataTableSelectAllCtrl(table) {
+        var updateDataTableSelectAllCtrl = function(table) {
             var $table             = table.table().node(),
                 $chkbox_all        = $('tbody input[type="checkbox"]', $table),
                 $chkbox_checked    = $('tbody input[type="checkbox"]:checked', $table),
@@ -150,7 +151,7 @@
             }
         }
 
-        function handleButtons(table) {
+        var handleButtons = function(table) {
             var $table             = table.table().node(),
                 $chkbox_checked    = $('tbody input[type="checkbox"]:checked', $table);
 
@@ -165,6 +166,35 @@
                 $("#delete_button").prop("disabled", false);
             }
         }
+
+        $('#delete_modal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget),
+                link = button.data('link'),
+                modal = $(this),
+                ids = $("#agenda-list tbody input:checked").map(function() {
+                    return parseInt($(this).parent().parent().attr("data-id"));
+                }).get();
+
+
+            modal.find('#delete_form').attr("action", link);
+            $(this).find("#delete_button").on('click', function() {
+                var mapped_rows = ids.map(function(id) { return "#row-" + id }),
+                    button = $(this);
+
+                modal.find(".cssload-container").toggleClass("active");
+                $(this).prop("disabled", true);
+
+                $.post(link, {"ids" : ids}, function(response) {
+                    if (response) {
+                        modal.modal("hide");
+                        table.rows(mapped_rows).remove().draw();
+                    }
+
+                    button.prop("disabled", false);
+                    modal.find(".cssload-container").toggleClass("active");
+                });
+            });
+        });
     });
 </script>
 @stop

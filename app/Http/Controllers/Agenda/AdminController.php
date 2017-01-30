@@ -73,7 +73,6 @@ class AdminController extends Controller
 
         $event->save();
 
-        //return $request->all();
         return redirect('admin/events')->with('status', 'Event updated!');
     }
 
@@ -163,5 +162,18 @@ class AdminController extends Controller
         $event = Event::destroy($id);
 
         return redirect('admin/events')->with('status', 'Event deleted!');
+    }
+
+    /**
+     * Remove the specified resources from storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function multiDestroy(Request $request)
+    {
+        $event = Event::destroy($request->ids);
+
+        return $event;
     }
 }

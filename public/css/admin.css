@@ -13665,4 +13665,43 @@ table.text-center th {
   cursor: pointer;
 }
 
+.cssload-container {
+  display: none;
+  position: absolute;
+}
+
+.cssload-container.active {
+  display: block;
+}
+
+.cssload-speeding-wheel {
+  width: 35px;
+  height: 35px;
+  margin: 0 auto;
+  border: 2px solid black;
+  border-radius: 50%;
+  border-left-color: transparent;
+  border-right-color: transparent;
+  animation: cssload-spin 900ms infinite linear;
+  -o-animation: cssload-spin 900ms infinite linear;
+  -ms-animation: cssload-spin 900ms infinite linear;
+  -webkit-animation: cssload-spin 900ms infinite linear;
+  -moz-animation: cssload-spin 900ms infinite linear;
+}
+
+@keyframes cssload-spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes cssload-spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
 /*# sourceMappingURL=admin.css.map */

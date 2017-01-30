@@ -11,10 +11,6 @@
 |
 */
 // ProCultura
-/*Route::get('/', 'PagesController@soon');
-Route::get('home', 'PagesController@home');
-Route::get('images/{filename}', 'PagesController@uploadedImages');*/
-
 Route::group(['middleware' => ['web']], function () {
     Route::get('/', 'PagesController@soon');
     Route::get('home', 'PagesController@home');
@@ -32,5 +28,6 @@ Route::group(['middleware' => ['admin']], function() {
     Route::get('admin', 'AdminController@home')->name('admin');
     Route::get('admin/users', 'UsersController@index')->name('users');
     Route::resource('admin/events', 'Agenda\AdminController');
+    Route::post('admin/events/delete', 'Agenda\AdminController@multiDestroy');
     Route::resource('admin/employments', 'Employments\AdminController');
 });

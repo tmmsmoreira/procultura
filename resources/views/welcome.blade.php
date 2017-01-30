@@ -11,6 +11,7 @@
         <link href="https://fonts.googleapis.com/css?family=Lato:100,600" rel="stylesheet" type="text/css">
 
         <!-- Styles -->
+        <link href="/css/app.css" rel="stylesheet" type="text/css">
         <style>
             html, body {
                 height: 100%;
@@ -37,7 +38,7 @@
             }
 
             .title {
-                font-size: 96px;
+                font-size: 80px;
                 padding-bottom: 10px;
             }
         </style>
@@ -45,10 +46,8 @@
     <body>
         <div class="container">
            <div class="content">
-               <div class="title">
-                   Brevemente
-               </div>
-               <img class="logo" src="https://dl.dropboxusercontent.com/u/4458251/logo.png" />
+               <h1 class="title">Brevemente</h1>
+               <img width="100%" class="logo" src="https://dl.dropboxusercontent.com/u/4458251/logo.png" />
            </div>
        </div>
     </body>
