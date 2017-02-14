@@ -6,4 +6,4 @@
  */
 
 require('./bootstrap');
-require('./main');
+require('./app_main');

@@ -3,23 +3,27 @@
 namespace App\Http\Controllers;
 
 use File;
+use Image;
+use App\Event;
 
 class PagesController extends Controller
 {
     public function soon()
     {
-      return view('welcome');
+        return view('welcome');
     }
 
     public function home()
     {
-      return view('home');
+        $events = Event::all();
+
+        return view('home', compact('events'));
     }
 
     public function uploadedImages($filename)
     {
         return Image::make(storage_path() . '/uploads/' . $filename)->response();
-        
+
         /*$path = storage_path() . '/uploads/' . $filename;
 
         if(!File::exists($path)) abort(404);

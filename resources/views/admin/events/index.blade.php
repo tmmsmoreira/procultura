@@ -177,12 +177,12 @@
 
 
             modal.find('#delete_form').attr("action", link);
-            $(this).find("#delete_button").on('click', function() {
+            modal.find("#delete_button").on('click', function() {
                 var mapped_rows = ids.map(function(id) { return "#row-" + id }),
                     button = $(this);
 
                 modal.find(".cssload-container").toggleClass("active");
-                $(this).prop("disabled", true);
+                button.prop("disabled", true);
 
                 $.post(link, {"ids" : ids}, function(response) {
                     if (response) {

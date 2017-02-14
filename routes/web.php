@@ -27,7 +27,8 @@ Route::group(['middleware' => ['guest']], function() {
 Route::group(['middleware' => ['admin']], function() {
     Route::get('admin', 'AdminController@home')->name('admin');
     Route::get('admin/users', 'UsersController@index')->name('users');
-    Route::resource('admin/events', 'Agenda\AdminController');
-    Route::post('admin/events/delete', 'Agenda\AdminController@multiDestroy');
-    Route::resource('admin/employments', 'Employments\AdminController');
+    Route::resource('admin/events', 'AgendaController');
+    Route::post('admin/events/delete', 'AgendaController@multiDestroy');
+    Route::resource('admin/employments', 'EmploymentsController');
+    Route::resource('admin/employments/delete', 'EmploymentsController@multiDestroy');
 });

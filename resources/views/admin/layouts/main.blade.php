@@ -276,7 +276,7 @@
           criado por TiagoM
         </div>
         <!-- Default to the left -->
-        <strong>Copyright &copy; 2016 <a href="/">ProCultura</a>.</strong> Todos os direitos reservados.
+        <strong>Copyright &copy; 2017 <a href="/">ProCultura</a>.</strong> Todos os direitos reservados.
     </footer>
 
     <!-- Control Sidebar -->
@@ -359,32 +359,21 @@
 <!-- ./wrapper -->
 
 <!-- REQUIRED JS SCRIPTS -->
+<script src="/js/admin.js"></script>
 
 <!-- jQuery 2.2.3 -->
-<script src="/plugins/jQuery/jquery-2.2.3.min.js"></script>
+<!-- <script src="/plugins/jQuery/jquery-2.2.3.min.js"></script> -->
 <!-- Bootstrap 3.3.6 -->
-<script src="/js/bootstrap.min.js"></script>
+<!-- <script src="/js/bootstrap.min.js"></script> -->
 @yield('required-js-scripts')
 <!-- SlimScroll -->
-<script src="/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+<!-- <script src="/plugins/slimScroll/jquery.slimscroll.min.js"></script> -->
 <!-- FastClick -->
-<script src="/plugins/fastclick/fastclick.js"></script>
+<!-- <script src="/plugins/fastclick/fastclick.js"></script> -->
 <!-- AdminLTE App -->
-<script src="/js/admin.min.js"></script>
-
-<!-- Config Ajax -->
-<script>
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
-</script>
-<!-- Optionally, you can add Slimscroll and FastClick plugins.
-     Both of these plugins are recommended to enhance the
-     user experience. Slimscroll is required when using the
-     fixed layout. -->
+<!-- <script src="/js/admin.min.js"></script> -->
 
 @yield('page-script')
+
 </body>
 </html>

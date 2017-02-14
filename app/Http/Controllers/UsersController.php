@@ -13,6 +13,6 @@ class UsersController extends Controller
     {
         $users = User::leftJoin("profiles", "users.profile_id", "=", "profiles.id")->select("users.name", "users.email", "profiles.key")->get();
 
-        return view('admin.users', compact('users'));
+        return view('admin.users.index', compact('users'));
     }
 }

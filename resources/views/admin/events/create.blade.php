@@ -35,7 +35,7 @@
                         </ul>
                     </div>
                 @endif
-                <form role="form" method="POST" action="/admin/events">
+                <form role="form" method="POST" enctype="multipart/form-data" action="/admin/events">
                     {{ csrf_field() }}
 
                     <div class="box-body">
@@ -63,7 +63,7 @@
                         <div class="form-group">
                             <label for="imageUpload">Imagem</label>
                             <input type="file" id="imageUpload" name="image" />
-                            <p class="help-block">Example block-level help text here.</p>
+                            <p class="help-block">A dimensão mínima da imagem é de 1280x720 e não pode ultrapassar os 5Mb.</p>
                         </div>
                     </div>
                     <div class="box-footer">

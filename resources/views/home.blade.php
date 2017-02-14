@@ -9,31 +9,21 @@
         <div id="home-carousel" class="carousel slide full-height" data-ride="carousel">
             <!-- Indicators -->
             <ol class="carousel-indicators">
-                <li data-target="#home-carousel" data-slide-to="0" class="active"></li>
-                <li data-target="#home-carousel" data-slide-to="1"></li>
-                <li data-target="#home-carousel" data-slide-to="2"></li>
+                @foreach($events as $i=>$event)
+                <li data-target="#home-carousel" data-slide-to="{{ $i }}" class="{{ $i == 0 ? 'active' : '' }}"></li>
+                @endforeach
             </ol>
 
             <!-- Wrapper for slides -->
             <div class="carousel-inner" role="listbox">
-                <div class="item active">
-                    <img src="images/1.jpg" alt="...">
+                @foreach($events as $i=>$event)
+                <div class="item {{ $i == 0 ? 'active' : '' }}">
+                    <img src="{{ asset('storage/' . $event->image) }}" />
                     <div class="carousel-caption">
-                      ...
+                        {{ $event->title }}
                     </div>
                 </div>
-                <div class="item">
-                    <img src="images/2.jpg" alt="...">
-                    <div class="carousel-caption">
-                      ...
-                    </div>
-                </div>
-                <div class="item">
-                    <img src="images/3.jpg" alt="...">
-                    <div class="carousel-caption">
-                      ...
-                    </div>
-                </div>
+                @endforeach
             </div>
 
             <!-- Controls -->

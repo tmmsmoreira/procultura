@@ -69,7 +69,7 @@
                         <div class="form-group">
                             <label for="imageUpload">Imagem</label>
                             <input type="file" id="imageUpload" name="image" />
-                            <p class="help-block">Example block-level help text here.</p>
+                            <p class="help-block">A dimensão mínima da imagem é de 1280x720 e não pode ultrapassar os 5Mb.</p>
                         </div>
                     </div>
                     <div class="box-footer">
@@ -100,39 +100,7 @@
             timePickerIncrement: 30,
             timePicker24Hour: true,
             autoApply: true,
-            locale: {
-                "format": "DD-MM-YYYY HH:mm",
-                "separator": " / ",
-                "applyLabel": "Aplicar",
-                "cancelLabel": "Cancelar",
-                "fromLabel": "De",
-                "toLabel": "Para",
-                "customRangeLabel": "Custom",
-                "daysOfWeek": [
-                    "Dom",
-                    "Seg",
-                    "Ter",
-                    "Qua",
-                    "Qui",
-                    "Sex",
-                    "Sab"
-                ],
-                "monthNames": [
-                    "Janeiro",
-                    "Fevereiro",
-                    "Março",
-                    "Abril",
-                    "Maio",
-                    "Junho",
-                    "Julho",
-                    "Agosto",
-                    "Setembro",
-                    "Outubro",
-                    "Novembro",
-                    "Dezembro"
-                ],
-                "firstDay": 1
-            }
+            locale: daterangepicker_locales
         });
     });
 </script>

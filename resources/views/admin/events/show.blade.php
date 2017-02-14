@@ -44,7 +44,9 @@
                         <label for="imageUpload">Imagem</label>
                         <div class="container-fluid">
                             <div class="row">
+                                @if(file_exists(asset('storage/' . $event->image)))
                                 <img width="50%" src="{{ asset('storage/' . $event->image) }}" />
+                                @endif
                             </div>
                         </div>
                     </div>
