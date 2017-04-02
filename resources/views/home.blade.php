@@ -32,14 +32,16 @@
                                         </div>
                                     </div>
                                     <div class="media-body">
-                                        <h4><a href="home/events/{{ $event->id }}"><b>{{ $event->title }}</b></a></h4>
+                                        <a href="home/events/{{ $event->id }}">
+                                            <h4 class="title">{{ $event->title }}</h4>
+                                        </a>
                                         {{ $event->description }}
                                     </div>
                                 </div>
                             </div>
                             <div class="col-xs-2">
                                 <div class="">
-                                    xpto
+                                    {{ $event->location }}
                                 </div>
                             </div>
                         </div>

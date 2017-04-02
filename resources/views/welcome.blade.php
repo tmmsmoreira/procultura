@@ -47,7 +47,7 @@
         <div class="container">
            <div class="content">
                <h1 class="title">Brevemente</h1>
-               <img width="100%" class="logo" src="https://dl.dropboxusercontent.com/u/4458251/logo.png" />
+               <img width="100%" class="logo" src="imgs/logo_big.png" />
            </div>
        </div>
     </body>

@@ -7732,6 +7732,11 @@ html, body {
   text-align: left;
 }
 
+#home-carousel .carousel-caption .title {
+  font-weight: bold;
+  color: white !important;
+}
+
 #home-carousel .carousel-caption .date {
   border-radius: 50%;
   border: 3px solid black;

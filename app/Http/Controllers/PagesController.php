@@ -20,13 +20,6 @@ class PagesController extends Controller
         return view('home', compact('events'));
     }
 
-    public function showEvent($id)
-    {
-        $event = Event::find($id);
-
-        return view('events/show', compact('event'));
-    }
-
     /*public function uploadedImages($filename)
     {
         return Image::make(storage_path() . '/uploads/' . $filename)->response();
