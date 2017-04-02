@@ -29,22 +29,22 @@
             <div class="box">
                 <div class="box-body">
                     <div class="form-group">
-                        <label for="descriptionTextarea">Descrição</label>
+                        <label>Descrição</label>
                         <span class="form-control" id="descriptionTextarea">{{ $event->description }}</span>
                     </div>
                     <div class="form-group">
-                        <label for="locationInput">Localização</label>
+                        <label>Localização</label>
                         <span class="form-control" id="locationInput">{{ $event->location }}</span>
                     </div>
                     <div class="form-group">
-                        <label for="datetime">Data de inicio e de fim:</label>
+                        <label>Data de inicio e de fim:</label>
                         <span class="form-control" id="datetime">{{ $event->start_datetime->format('d-m-Y H:i') . " / " . $event->end_datetime->format('d-m-Y H:i') }}</span>
                     </div>
                     <div class="form-group">
-                        <label for="imageUpload">Imagem</label>
+                        <label>Imagem</label>
                         <div class="container-fluid">
                             <div class="row">
-                                @if(file_exists(asset('storage/' . $event->image)))
+                                @if(file_exists(public_path() . '/storage/' . $event->image))
                                 <img width="50%" src="{{ asset('storage/' . $event->image) }}" />
                                 @endif
                             </div>

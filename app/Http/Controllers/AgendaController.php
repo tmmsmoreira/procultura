@@ -13,13 +13,12 @@ use Image;
 
 class AgendaController extends Controller
 {
-    protected $storage_path = "uploads/";
     protected $validator = [
         'title' => 'required|string|max:200',
         'description' => 'required|string|max:600',
         'location' => 'required|string',
         'datetime' => 'required|datetime_interval',
-        'image' => 'required|image|max:5000|dimensions:min_width=1280,min_height=720'
+        //'image' => 'required|image|max:5000|dimensions:min_width=1280,min_height=720'
     ];
 
     /**
@@ -76,11 +75,15 @@ class AgendaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request, $id)
     {
         $event = Event::find($id);
 
-        return view('admin/events/show', compact('event'));
+        if ($request->is('admin/*')) {
+            return view('admin/events/show', compact('event'));
+        } else {
+            return view('home/events/show', compact('event'));
+        }
     }
 
     /**
@@ -118,10 +121,8 @@ class AgendaController extends Controller
         $event->end_datetime = Carbon::createFromFormat('d-m-Y H:i', $datetimes_arr[1]);
 
         if ($request->hasFile("image")) {
-            $ext = pathinfo(storage_path($this->storage_path . $event->image), PATHINFO_EXTENSION);
-
-            if (Storage::exists($this->storage_path . $event->image)) {
-                Storage::delete($this->storage_path . $event->image);
+            if (Storage::disk('public')->exists($event->image)) {
+                Storage::disk('public')->delete($event->image);
             }
 
             $event->image = $this::storeImage($request->file('image'));
@@ -159,7 +160,7 @@ class AgendaController extends Controller
     }
 
     /**
-     * Store the specified file into the storage.
+     * Store a specified image into the storage.
      *
      * @param  \Illuminate\Http\Request  $request->file
      * @return String $image_path
@@ -173,7 +174,7 @@ class AgendaController extends Controller
             $constraint->upsize();
         })->encode("jpg");
 
-        Storage::put($this->storage_path . $image_path, $new_img);
+        Storage::disk('public')->put($image_path, $new_img);
 
         return $image_path;
     }

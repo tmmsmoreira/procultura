@@ -6,7 +6,7 @@
 <div id="home" class="site-wrapper">
     <!-- first section - Home -->
     <section class="home-agenda">
-        <div id="home-carousel" class="carousel slide full-height" data-ride="carousel">
+        <div id="home-carousel" class="carousel slide" data-interval="" data-ride="">
             <!-- Indicators -->
             <ol class="carousel-indicators">
                 @foreach($events as $i=>$event)
@@ -15,12 +15,34 @@
             </ol>
 
             <!-- Wrapper for slides -->
-            <div class="carousel-inner" role="listbox">
+            <div class="carousel-inner full-height" role="listbox">
                 @foreach($events as $i=>$event)
-                <div class="item {{ $i == 0 ? 'active' : '' }}">
-                    <img src="{{ asset('storage/' . $event->image) }}" />
+                <div class="item {{ $i == 0 ? 'active' : '' }} full-height">
+                    <div class="full-img full-height" style="background-image:url('{{ asset('storage/' . $event->image) }}')"></div>
                     <div class="carousel-caption">
-                        {{ $event->title }}
+                        <div class="container-fluid">
+                            <div class="col-xs-10">
+                                <div class="media">
+                                    <div class="media-left">
+                                        <div class="date">
+                                            <div>
+                                                <span class="day">{{ $event->start_datetime->format('d') }}</span><br>
+                                                <span class="month">{{ $event->start_datetime->format('M') }}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="media-body">
+                                        <h4><a href="home/events/{{ $event->id }}"><b>{{ $event->title }}</b></a></h4>
+                                        {{ $event->description }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-2">
+                                <div class="">
+                                    xpto
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 @endforeach

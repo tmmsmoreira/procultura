@@ -14,6 +14,7 @@
 Route::group(['middleware' => ['web']], function () {
     Route::get('/', 'PagesController@soon');
     Route::get('home', 'PagesController@home');
+    Route::resource('home/events', 'AgendaController');
     Route::post('subscribe', 'NewsletterController@store');
     Route::get('images/{filename}', 'PagesController@uploadedImages');
 });

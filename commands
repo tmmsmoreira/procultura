@@ -1,0 +1,2 @@
+php artisan storage:link
+ln -drsn storage/app/uploads/agenda storage/app/public

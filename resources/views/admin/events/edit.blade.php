@@ -70,6 +70,13 @@
                             <label for="imageUpload">Imagem</label>
                             <input type="file" id="imageUpload" name="image" />
                             <p class="help-block">A dimensão mínima da imagem é de 1280x720 e não pode ultrapassar os 5Mb.</p>
+                            <div class="container-fluid">
+                                <div class="row">
+                                    @if(file_exists(public_path() . '/storage/' . $event->image))
+                                    <img width="50%" src="{{ asset('storage/' . $event->image) }}" />
+                                    @endif
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="box-footer">

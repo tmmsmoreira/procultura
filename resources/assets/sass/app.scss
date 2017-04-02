@@ -35,8 +35,49 @@ html, body {
 }
 
 #home-carousel {
-  height: 100%;
-  overflow: hidden;
+    height: 100%;
+    overflow: hidden;
+
+    .carousel-caption {
+        left: 0;
+        right: 0;
+        padding-bottom: 0;
+        bottom: 0;
+        height: 20%;
+        background-color: rgba($brand-primary, 0.5);
+        text-align: left;
+
+        .date {
+            border-radius: 50%;
+            border: 3px solid black;
+            background-color: white;
+            min-width: 80px;
+            min-height: 80px;
+            text-align: center;
+
+            > div {
+                padding: 10px;
+            }
+
+            .day,
+            .month {
+                font-size: $font-size-large;
+                font-family: "Broadway";
+            }
+
+            .day {
+                color: black;
+            }
+
+            .month {
+                color: $brand-primary;
+            }
+        }
+    }
+
+    .carousel-control {
+        height: 80%;
+    }
 }
 
 .section-title {
@@ -126,6 +167,10 @@ html, body {
     color: white;
 }
 
+.full-height {
+    height: 100% !important;
+}
+
 .full-link {
     position: absolute;
     top: 0;
@@ -208,4 +253,11 @@ html, body {
 
 footer {
     color: white;
+}
+
+@media screen and (min-width: $screen-sm-min) {
+    // Move top the indicators
+    #home-carousel .carousel-indicators {
+        top: 80px;
+    }
 }
