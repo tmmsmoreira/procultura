@@ -18,14 +18,22 @@
 }
 
 html, body {
-  height: 100%;
-  width: 100%;
+    height: 100%;
+    width: 100%;
 }
 
 .site-wrapper {
-  width: 100%;
-  height: 100%;
-  min-height: 100%;
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
+}
+
+section {
+    min-height: 100%;
+}
+
+section > div:first-child {
+    padding-top: 65px;
 }
 
 #home > section {
@@ -78,10 +86,6 @@ html, body {
                 color: $brand-primary;
             }
         }
-    }
-
-    .carousel-control {
-        height: 80%;
     }
 }
 

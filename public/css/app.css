@@ -5666,7 +5666,7 @@ a.badge:hover, a.badge:focus {
   padding-bottom: 30px;
   margin-bottom: 30px;
   color: inherit;
-  background-color: #eeeeee;
+  background-color: #f5f8fa;
 }
 
 .jumbotron h1,
@@ -5681,7 +5681,7 @@ a.badge:hover, a.badge:focus {
 }
 
 .jumbotron > hr {
-  border-top-color: #d5d5d5;
+  border-top-color: #d3e0e9;
 }
 
 .container .jumbotron,
@@ -7711,6 +7711,14 @@ html, body {
   min-height: 100%;
 }
 
+section {
+  min-height: 100%;
+}
+
+section > div:first-child {
+  padding-top: 65px;
+}
+
 #home > section {
   height: 100%;
   position: relative;
@@ -7762,10 +7770,6 @@ html, body {
 
 #home-carousel .carousel-caption .date .month {
   color: #B20000;
-}
-
-#home-carousel .carousel-control {
-  height: 80%;
 }
 
 .section-title {

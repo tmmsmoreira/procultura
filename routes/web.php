@@ -12,14 +12,14 @@
 */
 // ProCultura
 Route::group(['middleware' => ['web']], function () {
-    Route::get('/', 'PagesController@soon');
-    Route::get('home', 'PagesController@home');
-    Route::resource('home/events', 'AgendaController');
+    Route::get('/', 'PagesController@home');
+    Route::resource('events', 'AgendaController');
+    Route::post('events/lazy', 'AgendaController@lazy');
     Route::post('subscribe', 'NewsletterController@store');
     Route::get('images/{filename}', 'PagesController@uploadedImages');
 });
 
-Auth::routes();
+//Auth::routes();
 Route::group(['middleware' => ['guest']], function() {
     Route::get('profiles', 'ProfilesControler@index');
 });

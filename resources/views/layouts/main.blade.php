@@ -5,11 +5,13 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}" />
-        
+
         <title>ProCultura</title>
 
         <link href="/css/app.css" rel="stylesheet" type="text/css">
         <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
+
+        @yield("required-css-files")
     </head>
     <body>
         <!-- Fixed navbar -->
@@ -22,13 +24,13 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="home"><img height="100%" alt="ProCultura" src="/imgs/logo.png"></a>
+                    <a class="navbar-brand" href="/"><img height="100%" alt="ProCultura" src="/imgs/logo.png"></a>
                 </div>
     			<div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li><a class="text-uppercase" href="#">Agenda Cultural</a></li>
-                        <li><a class="text-uppercase" href="#about">Emprego</a></li>
-                        <li><a class="text-uppercase" href="#contact">Formação</a></li>
+                        <li><a class="text-uppercase" href="events">Agenda Cultural</a></li>
+                        <li><a class="text-uppercase" href="">Emprego</a></li>
+                        <li><a class="text-uppercase" href="">Formação</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
@@ -67,5 +69,9 @@
         @yield('content')
 
         <script src="/js/app.js" type="text/javascript"></script>
+
+        @yield('required-js-scripts')
+
+        @yield('page-script')
     </body>
 </html>

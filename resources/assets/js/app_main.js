@@ -4,7 +4,7 @@ $(function() {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
-    
+
     $("#subscribe").submit(function(e) {
         e.preventDefault();
 

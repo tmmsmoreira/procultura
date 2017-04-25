@@ -1,10 +1,17 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
-        <title>Be right back.</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
+        <title>ProCultura</title>
 
+        <!-- Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Lato:100,600" rel="stylesheet" type="text/css">
+
+        <!-- Styles -->
+        <link href="/css/app.css" rel="stylesheet" type="text/css">
         <style>
             html, body {
                 height: 100%;
@@ -14,10 +21,9 @@
                 margin: 0;
                 padding: 0;
                 width: 100%;
-                color: #B0BEC5;
                 display: table;
                 font-weight: 100;
-                font-family: 'Lato', sans-serif;
+                font-family: 'Lato';
             }
 
             .container {
@@ -32,16 +38,17 @@
             }
 
             .title {
-                font-size: 72px;
-                margin-bottom: 40px;
+                font-size: 80px;
+                padding-bottom: 10px;
             }
         </style>
     </head>
     <body>
         <div class="container">
-            <div class="content">
-                <div class="title">Be right back.</div>
-            </div>
-        </div>
+           <div class="content">
+               <h1 class="title">Brevemente</h1>
+               <img width="100%" class="logo" src="imgs/logo_big.png" />
+           </div>
+       </div>
     </body>
 </html>

@@ -17,23 +17,23 @@
             <div class="col-lg-8">
                 <div class="col-lg-4">
                     <ul class="list-unstyled">
-                        <li class="h4"><b>ProCultura</b></li>
-                        <li>O que fazemos</li>
-                        <li>Quem somos</li>
+                        <li><h5><b>ProCultura</h5></b></li>
+                        <li><a href="about">Quem somos</a></li>
+                        <li><a href="what-we-do">O que fazemos</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-4">
                     <ul class="list-unstyled">
-                        <li class="h4"><b>ProCultura</b></li>
-                        <li>O que fazemos</li>
-                        <li>Quem somos</li>
+                        <li><h5><b>Clientes e Parceiros</b></h5></li>
+                        <li><a href="how-it-works">Como funciona</a></li>
+                        <li><a href="partners">Lista de Parceiros</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-4">
                     <ul class="list-unstyled">
-                        <li class="h4"><b>ProCultura</b></li>
-                        <li>O que fazemos</li>
-                        <li>Quem somos</li>
+                        <li><h5><b>Precisa de Ajuda?</b></h5></li>
+                        <li><a href="support">Centro de Suporte</a></li>
+                        <li><a href="contacts">Contactos</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-12">

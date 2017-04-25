@@ -16,7 +16,7 @@ class PagesController extends Controller
     public function home()
     {
         $events = Event::all();
-
+        
         return view('home', compact('events'));
     }
 

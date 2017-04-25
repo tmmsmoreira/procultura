@@ -32,7 +32,7 @@
                                         </div>
                                     </div>
                                     <div class="media-body">
-                                        <a href="home/events/{{ $event->id }}">
+                                        <a href="events/{{ $event->id }}">
                                             <h4 class="title">{{ $event->title }}</h4>
                                         </a>
                                         {{ $event->description }}
@@ -62,7 +62,7 @@
         </div>
     </section><!-- /home-agenda -->
     <section class="home-emprego">
-        <div class="container marketing" style="padding:50px 0">
+        <div class="container marketing">
             <div class="row">
                 <p class="h1 section-title">Emprego</p>
             </div>
@@ -135,7 +135,7 @@
         </div>
     </section><!-- /home-empregos -->
     <section class="home-servicos" style="background:url(imgs/services.jpg) no-repeat center center; background-size:cover">
-        <div class="container marketing" style="padding:50px 0">
+        <div class="container marketing">
             <div class="row">
                 <p class="h1 section-title white">Serviços Culturais</p>
             </div>
@@ -146,7 +146,7 @@
         </div>
     </section>
     <section class="home-formacao" style="background-color:#B40505">
-        <div class="container marketing" style="padding:50px 0">
+        <div class="container marketing">
             <div class="row">
                 <p class="h1 section-title white">Formação</p>
             </div>
@@ -218,7 +218,7 @@
         </div>
     </section>
     <section class="home-estudos" style="background:url(imgs/studies.jpg) no-repeat center center; background-size:cover">
-        <div class="container marketing" style="padding:50px 0">
+        <div class="container marketing">
             <div class="row">
                 <p class="h1 section-title white">Estudos Culturais</p>
             </div>

@@ -10,6 +10,7 @@ use App\Http\Controllers\Controller;
 use App\Event;
 use Carbon\Carbon;
 use Image;
+use Response;
 
 class AgendaController extends Controller
 {
@@ -26,11 +27,15 @@ class AgendaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $events = Event::all();
 
-        return view('admin/events/index', compact('events'));
+        if ($request->is('admin/*')) {
+            return view('admin/events/index', compact('events'));
+        }
+
+        return view('events/index', compact('events'));
     }
 
     /**
@@ -38,9 +43,13 @@ class AgendaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        return view('admin/events/create');
+        if ($request->is('admin/*')) {
+            return view('admin/events/create');
+        }
+
+        return;
     }
 
     /**
@@ -51,22 +60,26 @@ class AgendaController extends Controller
      */
     public function store(Request $request)
     {
-        $event = new Event;
+        if ($request->is('admin/*')) {
+            $event = new Event;
 
-        $this->validate($request, $this->validator);
+            $this->validate($request, $this->validator);
 
-        $datetimes_arr = explode(" / ", $request->datetime);
+            $datetimes_arr = explode(" / ", $request->datetime);
 
-        $event->title = $request->title;
-        $event->description = $request->description;
-        $event->location = $request->location;
-        $event->start_datetime = Carbon::createFromFormat('d-m-Y H:i', $datetimes_arr[0]);
-        $event->end_datetime = Carbon::createFromFormat('d-m-Y H:i', $datetimes_arr[1]);
-        $event->image = $this::storeImage($request->file('image'));
+            $event->title = $request->title;
+            $event->description = $request->description;
+            $event->location = $request->location;
+            $event->start_datetime = Carbon::createFromFormat('d-m-Y H:i', $datetimes_arr[0]);
+            $event->end_datetime = Carbon::createFromFormat('d-m-Y H:i', $datetimes_arr[1]);
+            $event->image = $this::storeImage($request->file('image'));
 
-        $event->save();
+            $event->save();
 
-        return redirect('admin/events')->with('status', 'Event updated!');
+            return redirect('admin/events')->with('status', 'Event updated!');
+        }
+
+        return;
     }
 
     /**
@@ -81,9 +94,9 @@ class AgendaController extends Controller
 
         if ($request->is('admin/*')) {
             return view('admin/events/show', compact('event'));
-        } else {
-            return view('home/events/show', compact('event'));
         }
+
+        return view('events/show', compact('event'));
     }
 
     /**
@@ -94,9 +107,13 @@ class AgendaController extends Controller
      */
     public function edit($id)
     {
-        $event = Event::find($id);
+        if ($request->is('admin/*')) {
+            $event = Event::find($id);
 
-        return view('admin/events/edit', compact('event'));
+            return view('admin/events/edit', compact('event'));
+        }
+
+        return;
     }
 
     /**
@@ -108,29 +125,33 @@ class AgendaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request, $this->validator);
+        if ($request->is('admin/*')) {
+            $this->validate($request, $this->validator);
 
-        $event = Event::find($id);
+            $event = Event::find($id);
 
-        $datetimes_arr = explode(" / ", $request->datetime);
+            $datetimes_arr = explode(" / ", $request->datetime);
 
-        $event->title = $request->title;
-        $event->description = $request->description;
-        $event->location = $request->location;
-        $event->start_datetime = Carbon::createFromFormat('d-m-Y H:i', $datetimes_arr[0]);
-        $event->end_datetime = Carbon::createFromFormat('d-m-Y H:i', $datetimes_arr[1]);
+            $event->title = $request->title;
+            $event->description = $request->description;
+            $event->location = $request->location;
+            $event->start_datetime = Carbon::createFromFormat('d-m-Y H:i', $datetimes_arr[0]);
+            $event->end_datetime = Carbon::createFromFormat('d-m-Y H:i', $datetimes_arr[1]);
 
-        if ($request->hasFile("image")) {
-            if (Storage::disk('public')->exists($event->image)) {
-                Storage::disk('public')->delete($event->image);
+            if ($request->hasFile("image")) {
+                if (Storage::disk('public')->exists($event->image)) {
+                    Storage::disk('public')->delete($event->image);
+                }
+
+                $event->image = $this::storeImage($request->file('image'));
             }
 
-            $event->image = $this::storeImage($request->file('image'));
+            $event->save();
+
+            return redirect('admin/events')->with('status', 'Event updated!');
         }
 
-        $event->save();
-
-        return redirect('admin/events')->with('status', 'Event updated!');
+        return;
     }
 
     /**
@@ -141,9 +162,13 @@ class AgendaController extends Controller
      */
     public function destroy($id)
     {
-        $event = Event::destroy($id);
+        if ($request->is('admin/*')) {
+            $event = Event::destroy($id);
 
-        return redirect('admin/events')->with('status', 'Event deleted!');
+            return redirect('admin/events')->with('status', 'Event deleted!');
+        }
+
+        return;
     }
 
     /**
@@ -177,5 +202,29 @@ class AgendaController extends Controller
         Storage::disk('public')->put($image_path, $new_img);
 
         return $image_path;
+    }
+
+    /**
+     * Display a interval listing of resources.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function lazy(Request $request)
+    {
+        $result = Event::all();
+
+        $events = array();
+        foreach($result as $event) {
+            $aux = (object) array();
+            $aux->title = $event->title;
+            $aux->start = $event->start_datetime->toIso8601String();
+            $aux->end = $event->end_datetime->toIso8601String();
+            $aux->url = "events/" . $event->id;
+            $aux->color = "#B20000";
+            $aux->borderColor = "#222";
+            array_push($events, $aux);
+        }
+
+        return Response::json($events);
     }
 }
