@@ -46,10 +46,16 @@ section > div:first-child {
     height: 100%;
     overflow: hidden;
 
+    .carousel-indicators {
+        height: 20px;
+    }
+
     .carousel-caption {
         left: 0;
         right: 0;
         padding-bottom: 0;
+        padding-left: 15%;
+        padding-right: 15%;
         bottom: 0;
         height: 20%;
         background-color: rgba($brand-primary, 0.5);
@@ -169,7 +175,7 @@ section > div:first-child {
 }
 
 .overlay-content {
-    padding: 10px;
+    padding: 21px;
     height: 100%;
     z-index: 3;
     position: relative;

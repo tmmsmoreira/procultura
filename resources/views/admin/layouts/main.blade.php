@@ -139,7 +139,7 @@
                 </ul>
               </li>-->
               <li>
-                  <a href="/home"><i class="fa fa-external-link-square" style="margin-right:5px"></i><span>Visitar ProCultura</span></a>
+                  <a href="/"><i class="fa fa-external-link-square" style="margin-right:5px"></i><span>Visitar ProCultura</span></a>
               </li>
               <!-- User Account Menu -->
               <li class="dropdown user user-menu">

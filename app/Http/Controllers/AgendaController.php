@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Event;
+use DB;
 use Carbon\Carbon;
 use Image;
 use Response;
@@ -29,13 +30,23 @@ class AgendaController extends Controller
      */
     public function index(Request $request)
     {
-        $events = Event::all();
-
         if ($request->is('admin/*')) {
-            return view('admin/events/index', compact('events'));
-        }
+            $events = Event::get();
 
-        return view('events/index', compact('events'));
+            return view('admin/events/index', compact('events'));
+        } else {
+            $locations = DB::table('events')->select('location')->distinct()->get();
+
+            $events = Event::when(!empty($request->location), function($q) use ($request) {
+                return $q->where('location', $request->location);
+            })->when(!empty($request->keyword), function($q) use ($request) {
+                return $q->where('title', 'like', "%" . $request->keyword . "%");
+            })->when(!empty($request->date), function($q) use ($request) {
+                return $q->whereDate('start_datetime', '>=', Carbon::createFromFormat('d/m/Y H:i', $request->date . "00:00"));
+            })->get();
+
+            return view('events/index', compact('events', 'locations'));
+        }
     }
 
     /**
@@ -226,5 +237,19 @@ class AgendaController extends Controller
         }
 
         return Response::json($events);
+    }
+
+    /**
+     * Display a interval listing of resources.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function search(Request $request)
+    {
+        $locations = DB::table('events')->select('location')->distinct()->get();
+
+        $events = Event::where('location', $request->location)->get();
+
+        return view('events/index', compact('events', 'locations'));
     }
 }

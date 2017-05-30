@@ -16,8 +16,33 @@ class PagesController extends Controller
     public function home()
     {
         $events = Event::all();
-        
+
         return view('home', compact('events'));
+    }
+
+    public function about()
+    {
+        return view('about');
+    }
+
+    public function whatWeDo()
+    {
+        return view('whatwedo');
+    }
+
+    public function terms()
+    {
+        return view('terms');
+    }
+
+    public function ourPartners()
+    {
+        return view('ourpartners');
+    }
+
+    public function bePartner()
+    {
+        return view('bepartner');
     }
 
     /*public function uploadedImages($filename)

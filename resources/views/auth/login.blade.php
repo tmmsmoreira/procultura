@@ -70,6 +70,8 @@
             </div>
         </div>
     </section>
+
     @yield('footer')
+    
 </div>
 @endsection

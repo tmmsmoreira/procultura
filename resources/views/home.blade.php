@@ -21,7 +21,7 @@
                     <div class="full-img full-height" style="background-image:url('{{ asset('storage/' . $event->image) }}')"></div>
                     <div class="carousel-caption">
                         <div class="container-fluid">
-                            <div class="col-xs-10">
+                            <div class="col-xs-9">
                                 <div class="media">
                                     <div class="media-left">
                                         <div class="date">
@@ -39,7 +39,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xs-2">
+                            <div class="col-xs-3">
                                 <div class="">
                                     {{ $event->location }}
                                 </div>
@@ -64,7 +64,7 @@
     <section class="home-emprego">
         <div class="container marketing">
             <div class="row">
-                <p class="h1 section-title">Emprego</p>
+                <h1 class="section-title">Emprego</h1>
             </div>
             <div class="row">
                 <div class="col-sm-4">
@@ -137,7 +137,7 @@
     <section class="home-servicos" style="background:url(imgs/services.jpg) no-repeat center center; background-size:cover">
         <div class="container marketing">
             <div class="row">
-                <p class="h1 section-title white">Serviços Culturais</p>
+                <h1 class="section-title white">Serviços Culturais</h1>
             </div>
             <div class="row">
                 <p class="h3 section-text white">Ofertas de serviços e produtos culturais recentes. identificando as opções ideais para cada situação. Tem à disposição uma ferramenta de pesquisa para esses mesmos produtos e serviços, de forma a ajustar as suas necessidades.<br/>
@@ -148,7 +148,7 @@
     <section class="home-formacao" style="background-color:#B40505">
         <div class="container marketing">
             <div class="row">
-                <p class="h1 section-title white">Formação</p>
+                <h1 class="section-title white">Formação</h1>
             </div>
             <div class="row">
                 <div class="col-sm-4">
@@ -220,7 +220,7 @@
     <section class="home-estudos" style="background:url(imgs/studies.jpg) no-repeat center center; background-size:cover">
         <div class="container marketing">
             <div class="row">
-                <p class="h1 section-title white">Estudos Culturais</p>
+                <h1 class="section-title white">Estudos Culturais</h1>
             </div>
             <div class="row">
                 <p class="h3 section-text white">A Cultura, como área de investigação universitária autónoma data sensivelmente dos anos 70, sobretudo pela necessidade de criar um domínio interdisciplinar onde a diversidade fragmentária das ciências que estudam o homem e as suas diferentes produções culturais, pudessem ser confrontadas entre si.</p>

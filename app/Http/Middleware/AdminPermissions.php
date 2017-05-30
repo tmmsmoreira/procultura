@@ -17,7 +17,7 @@ class AdminPermissions
     {
         if (!$request->user() || !$request->user()->isAdmin())
         {
-            return redirect('home');
+            return redirect('/');
         }
 
         return $next($request);

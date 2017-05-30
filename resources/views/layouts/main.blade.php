@@ -28,15 +28,15 @@
                 </div>
     			<div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li><a class="text-uppercase" href="events">Agenda Cultural</a></li>
-                        <li><a class="text-uppercase" href="">Emprego</a></li>
-                        <li><a class="text-uppercase" href="">Formação</a></li>
+                        <li><a class="text-uppercase" href="/events">Agenda Cultural</a></li>
+                        <!--<li><a class="text-uppercase" href="">Emprego</a></li>
+                        <li><a class="text-uppercase" href="">Formação</a></li>-->
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
                         @if (Auth::guest())
-                            <li><a href="{{ url('/login') }}">Login</a></li>
-                            <li><a href="{{ url('/profiles') }}">Registar</a></li>
+                            <!--<li><a href="{{ url('/login') }}">Login</a></li>
+                            <li><a href="{{ url('/profiles') }}">Registar</a></li>-->
                         @else
                             @if (Auth::user()->isAdmin())
                             <li><a href="{{ url('/admin') }}">CMS</a></li>
