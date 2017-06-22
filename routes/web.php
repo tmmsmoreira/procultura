@@ -18,6 +18,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/our-partners', 'PagesController@ourPartners');
     Route::get('/be-partner', 'PagesController@bePartner');
     Route::get('/terms-and-conditions', 'PagesController@terms');
+    Route::get('/contacs', 'PagesController@home');
     Route::resource('events', 'AgendaController');
     //Route::post('events/lazy', 'AgendaController@lazy');
     Route::post('subscribe', 'NewsletterController@store');

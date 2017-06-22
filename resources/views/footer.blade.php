@@ -4,7 +4,7 @@
         <div class="row">
             <div class="col-lg-4">
                 <img height="55px" alt="ProCultura" src="/imgs/logo2.png">
-                <h6>@ 2016 ProCuntura, Inc.</h6>
+                <h6>@ 2016 ProCultura, Inc.</h6>
                 <ul class="list-inline">
                     <li><a href="/terms-and-conditions">Termos e Condições</a></li>
                 </ul>
@@ -32,7 +32,7 @@
                     <ul class="list-unstyled">
                         <li><h5><b>Precisa de Ajuda?</b></h5></li>
                         <!--<li><a href="/support">Centro de Suporte</a></li>-->
-                        <li><a href="/contacts">Contactos</a></li>
+                        <li><a href="">Contactos</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-12">

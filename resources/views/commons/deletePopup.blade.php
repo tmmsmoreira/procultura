@@ -7,12 +7,12 @@
                 <h4 class="modal-title">Aviso</h4>
             </div>
             <div class="modal-body">
-                <p>Tem a certeza que quer eliminar estes) registo(s)?</p>
+                <p>Tem a certeza que quer eliminar este(s) registo(s)?</p>
             </div>
             <div class="modal-footer">
-                    <div class="cssload-container">
-                        <div class="cssload-speeding-wheel"></div>
-                    </div>
+                <div class="cssload-container">
+                    <div class="cssload-speeding-wheel"></div>
+                </div>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
                 <button type="submit" id="delete_button" class="btn btn-danger">Apagar</button>
             </div>

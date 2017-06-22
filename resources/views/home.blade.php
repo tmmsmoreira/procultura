@@ -236,7 +236,7 @@
         </div>
         <div style="position:absolute;width:100%;bottom:0;background:black;">
             <div class="container" style="height:100%">
-                <form class="form-inline" method="POST" id="subscribe" style="padding:10px">
+                <form class="form-inline" method="POST" action="subscribe" id="subscribe" style="padding:10px">
                     {!! csrf_field() !!}
                     <div class="form-group form-group-lg">
                         <p class="form-control-static" style="color:white">Subscreva a nossa newsletter e receba novidades no seu email uma vez por semana!</p>
@@ -251,7 +251,19 @@
                 <div class="modal fade" id="subscribe_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
-                            <div class="modal-header"></div>
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title">Newsletter</h4>
+                            </div>
+                            <div class="modal-body">
+                                <p id="message"></p>
+                            </div>
+                            <div class="modal-footer">
+                                <div class="cssload-container">
+                                    <div class="cssload-speeding-wheel"></div>
+                                </div>
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Ok</button>
+                            </div>
                         </div>
                     </div>
                 </div>

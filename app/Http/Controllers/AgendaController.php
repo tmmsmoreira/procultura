@@ -116,7 +116,7 @@ class AgendaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request, $id)
     {
         if ($request->is('admin/*')) {
             $event = Event::find($id);

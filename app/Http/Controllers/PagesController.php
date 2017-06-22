@@ -45,6 +45,11 @@ class PagesController extends Controller
         return view('bepartner');
     }
 
+    public function contacts()
+    {
+        return view('contacts');
+    }
+
     /*public function uploadedImages($filename)
     {
         return Image::make(storage_path() . '/uploads/' . $filename)->response();
