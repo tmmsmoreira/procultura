@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\NewsletterContact;
+use Illuminate\Support\Facades\Storage;
+
+use File;
 
 class NewsletterController extends Controller
 {
@@ -14,7 +17,9 @@ class NewsletterController extends Controller
      */
     public function index()
     {
-        //
+        $contacts = NewsletterContact::all();
+
+        return view('admin/newsletter/index', compact('contacts'));
     }
 
     /**
@@ -89,6 +94,47 @@ class NewsletterController extends Controller
      */
     public function destroy($id)
     {
-        //
+        if ($request->is('admin/*')) {
+            $contact = NewsletterContact::destroy($id);
+
+            return redirect('admin/newsletter')->with('status', 'Contact deleted!');
+        }
+
+        return;
+    }
+
+    /**
+     * Remove the specified resources from storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function multiDestroy(Request $request)
+    {
+        $contacts = NewsletterContact::destroy($request->ids);
+
+        return $contacts;
+    }
+
+    /**
+     * Export list of contacts
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return -
+     */
+    public function export(Request  $request)
+    {
+        $contacts = NewsletterContact::select('email')->get()->pluck("email")->toArray();
+
+        $headers = array(
+            'Content-Type' => 'text/csv',
+            'Content-Disposition' => 'attachment; filename="contacts.csv"'
+        );
+
+        Storage::disk('local')->put("contacts.csv", "\"Email Address\"\n" . implode("\n", $contacts));
+
+        $file = storage_path("app/contacts.csv");
+
+        return response()->download($file, "contacts.csv", $headers)->deleteFileAfterSend(true);
     }
 }

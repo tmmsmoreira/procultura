@@ -238,6 +238,7 @@
             <!-- Optionally, you can add icons to the links -->
             <li class="{{ Helpers::setActiveForRoute('admin') }}"><a href="{{ route('admin') }}"><i class="fa fa-link"></i> <span>Vista Geral</span></a></li>
             <li class="{{ Helpers::setActiveForRoute('admin/users') }}"><a href="{{ route('users') }}"><i class="fa fa-link"></i> <span>Utilizadores</span></a></li>
+            <li class="{{ Helpers::setActiveForRoute('admin/newsletter') }}"><a href="{{ route('newsletter.index') }}"><i class="fa fa-link"></i> <span>Newsletter</span></a></li>
             <li class="header text-uppercase">Páginas</li>
             <li class="{{ Helpers::setActiveForRoute('admin/events') }}"><a href="{{ route('events.index') }}"><i class="fa fa-link"></i> <span>Agenda Cultural</span></a></li>
             <li class="{{ Helpers::setActiveForRoute('admin/employments') }}"><a href="{{ route('employments.index') }}"><i class="fa fa-link"></i> <span>Empregos</span></a></li>
