@@ -106,7 +106,7 @@ class NewsletterController extends Controller
     /**
      * Remove the specified resources from storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function multiDestroy(Request $request)
@@ -119,19 +119,19 @@ class NewsletterController extends Controller
     /**
      * Export list of contacts
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return -
      */
-    public function export(Request  $request)
+    public function export(Request $request)
     {
         $contacts = NewsletterContact::select('email')->get()->pluck("email")->toArray();
+
+        Storage::disk('local')->put("contacts.csv", "\"Email Address\"\n" . implode("\n", $contacts));
 
         $headers = array(
             'Content-Type' => 'text/csv',
             'Content-Disposition' => 'attachment; filename="contacts.csv"'
         );
-
-        Storage::disk('local')->put("contacts.csv", "\"Email Address\"\n" . implode("\n", $contacts));
 
         $file = storage_path("app/contacts.csv");
 

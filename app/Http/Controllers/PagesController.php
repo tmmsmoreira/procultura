@@ -15,7 +15,7 @@ class PagesController extends Controller
 
     public function home()
     {
-        $events = Event::all();
+        $events = Event::orderBy('start_datetime', 'desc')->limit(10)->get();
 
         return view('home', compact('events'));
     }

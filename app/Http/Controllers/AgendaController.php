@@ -17,7 +17,7 @@ class AgendaController extends Controller
 {
     protected $validator = [
         'title' => 'required|string|max:200',
-        'description' => 'required|string|max:600',
+        'description' => 'required|string|max:1500',
         'location' => 'required|string',
         'datetime' => 'required|datetime_interval',
         //'image' => 'required|image|max:5000|dimensions:min_width=1280,min_height=720'
@@ -36,7 +36,7 @@ class AgendaController extends Controller
 
             return view('admin/events/index', compact('events'));
         } else {
-            $locations = DB::table('events')->select('location')->distinct()->get();
+            $locations = Event::select('location')->distinct()->get();
 
             $events = Event::when(!empty($request->location), function($q) use ($request) {
                 return $q->where('location', $request->location);
@@ -248,7 +248,7 @@ class AgendaController extends Controller
      */
     public function search(Request $request)
     {
-        $locations = DB::table('events')->select('location')->distinct()->get();
+        $locations = Event::select('location')->distinct()->get();
 
         $events = Event::where('location', $request->location)->get();
 

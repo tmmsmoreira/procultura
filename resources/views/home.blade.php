@@ -33,15 +33,26 @@
                                     </div>
                                     <div class="media-body">
                                         <a href="events/{{ $event->id }}">
-                                            <h4 class="title">{{ $event->title }}</h4>
+                                            <h4 class="title">
+                                                @if (strlen($event->title) > 50)
+                                                    {{ substr($event->title, 0, 50) . "..." }}
+                                                @else
+                                                    {{ $event->title }}
+                                                @endif
+                                            </h4>
                                         </a>
-                                        {{ $event->description }}
+                                        @if (strlen($event->description) > 100)
+                                            {{ substr($event->description, 0, 100) . "..." }}
+                                        @else
+                                            {{ $event->description }}
+                                        @endif
                                     </div>
                                 </div>
                             </div>
                             <div class="col-xs-3">
-                                <div class="">
-                                    {{ $event->location }}
+                                <div class="text-center">
+                                    <i style="font-size:20px" class="glyphicon glyphicon-map-marker"></i>
+                                    <h4>{{ $event->location }}</h4>
                                 </div>
                             </div>
                         </div>
@@ -66,7 +77,7 @@
             <div class="row">
                 <h1 class="section-title">Emprego</h1>
             </div>
-            <div class="row">
+            <!--<div class="row">
                 <div class="col-sm-4">
                     <div class="fig-hover-item" style="background-image:url(images/job1.jpg);">
                         <a href="" class="full-link"></a>
@@ -86,7 +97,7 @@
                             </div>
                         </div>
                     </div>
-                </div><!-- /.col-lg-4 -->
+                </div>
                 <div class="col-sm-4">
                     <div class="fig-hover-item" style="background-image:url(images/job2.jpg);">
                         <a href="" class="full-link"></a>
@@ -106,7 +117,7 @@
                             </div>
                         </div>
                     </div>
-                </div><!-- /.col-lg-4 -->
+                </div>
                 <div class="col-sm-4">
                     <div class="fig-hover-item" style="background-image:url(images/job3.jpg);">
                         <a href="" class="full-link"></a>
@@ -126,8 +137,8 @@
                             </div>
                         </div>
                     </div>
-                </div><!-- /.col-lg-4 -->
-            </div><!-- /.row -->
+                </div>
+            </div>-->
             <div class="row">
 
             </div>
@@ -150,7 +161,7 @@
             <div class="row">
                 <h1 class="section-title white">Formação</h1>
             </div>
-            <div class="row">
+            <!--<div class="row">
                 <div class="col-sm-4">
                     <div class="fig-hover-item img-circle" style="background-image:url(images/job1.jpg);">
                         <a href="" class="full-link"></a>
@@ -170,7 +181,7 @@
                             </div>
                         </div>
                     </div>
-                </div><!-- /.col-lg-4 -->
+                </div>
                 <div class="col-sm-4">
                     <div class="fig-hover-item img-circle" style="background-image:url(images/job2.jpg);">
                         <a href="" class="full-link"></a>
@@ -190,7 +201,7 @@
                             </div>
                         </div>
                     </div>
-                </div><!-- /.col-lg-4 -->
+                </div>
                 <div class="col-sm-4">
                     <div class="fig-hover-item img-circle" style="background-image:url(images/job3.jpg);">
                         <a href="" class="full-link"></a>
@@ -210,8 +221,8 @@
                             </div>
                         </div>
                     </div>
-                </div><!-- /.col-lg-4 -->
-            </div><!-- /.row -->
+                </div>
+            </div>-->
             <div class="row">
 
             </div>

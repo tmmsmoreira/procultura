@@ -34,11 +34,11 @@ Auth::routes();
 Route::group(['middleware' => ['admin']], function() {
     Route::get('admin', 'AdminController@home')->name('admin');
     Route::get('admin/users', 'UsersController@index')->name('users');
-    Route::resource('admin/newsletter', 'NewsletterController');
     Route::post('admin/newsletter/delete', 'NewsletterController@multiDestroy');
     Route::get('admin/newsletter/export', 'NewsletterController@export');
-    Route::resource('admin/events', 'AgendaController');
+    Route::resource('admin/newsletter', 'NewsletterController');
     Route::post('admin/events/delete', 'AgendaController@multiDestroy');
+    Route::resource('admin/events', 'AgendaController');
     Route::resource('admin/employments', 'EmploymentsController');
     Route::resource('admin/employments/delete', 'EmploymentsController@multiDestroy');
 });
