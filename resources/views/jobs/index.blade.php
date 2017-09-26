@@ -11,10 +11,10 @@
 <div id="events" class="site-wrapper">
     <section class="events-calendar">
         <div class="container">
-            <p class="h1 section-title">Agenda Cultural</p>
+            <p class="h1 section-title">Emprego</p>
         </div>
-        <div class="container" style="padding-bottom:30px">
-            <form class="form-inline" method="GET" action="/events">
+        <div class="container" style="padding-bottom:20px">
+            <form class="form-inline" method="GET" action="/jobs">
                 <div class="row">
                     <div class="form-group col-sm-4">
                         <label class="sr-only" for="key-word">Palavras Chave</label>
@@ -25,15 +25,7 @@
                         <label class="sr-only" for="location">Location</label>
                         <select id="location" name="location" style="width:100%" class="form-control input-lg">
                             <option value="">Local...</option>
-                            @foreach($locations as $i=>$location)
-                            <option value="{{ $location->location }}"
-                                @if($location->location == app('request')->input('location'))
-                                    {{ 'selected' }}
-                                @endif
-                            >
-                                {{ $location->location }}
-                            </option>
-                            @endforeach
+
                         </select>
                     </div>
                     <div class="form-group col-sm-2">
@@ -52,22 +44,22 @@
         </div>
         <div class="container">
             <div class="row">
-                @foreach($events as $i=>$event)
-                <div class="col-sm-4" style="padding-bottom:30px">
-                    <div class="fig-hover-item" style="background-image:url('{{ asset('storage/' . $event->image) }}')">
-                        <a href="events/{{ $event->id }}" class="full-link"></a>
+                @foreach($jobs as $i=>$job)
+                <div class="col-sm-4">
+                    <div class="fig-hover-item" style="background-image:url('{{ asset('storage/' . $job->image) }}')">
+                        <a href="events/{{ $job->id }}" class="full-link"></a>
                         <div class="fig-hover-item-content text-center">
                             <div class="overlay">
                                 <div class="overlay-color"></div>
                                 <div class="overlay-content">
                                     <div class="vertical-center" style="height:100%">
                                         <div class="centered">
-                                            <h3>{{ $event->title }}</h3>
-                                            <h4>{{ $event->location }}</h4>
+                                            <h3>{{ $job->title }}</h3>
+                                            <h4>{{ $job->location }}</h4>
                                         </div>
                                     </div>
                                 </div>
-                                <a href="events/{{ $event->id }}" class="full-link"></a>
+                                <a href="jobs/{{ $job->id }}" class="full-link"></a>
                             </div>
                         </div>
                     </div>

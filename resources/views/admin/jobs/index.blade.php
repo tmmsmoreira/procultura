@@ -35,18 +35,18 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($employments as $employment)
+                            @foreach($jobs as $job)
                             <tr>
-                                <td>{{ $employment->name }}</td>
-                                <td>{{ $employment->localy }}</td>
-                                <td>{{ $employment->created_at }}</td>
+                                <td>{{ $job->name }}</td>
+                                <td>{{ $job->localy }}</td>
+                                <td>{{ $job->created_at }}</td>
                             </tr>
                             @endforeach
                         </tbody>
                     </table>
                 </div>
                 <div class="box-footer">
-                    <a href="{{ route('employments.create') }}" class="btn btn-info" role="button">Adicionar</a>
+                    <a href="{{ route('jobs.create') }}" class="btn btn-info" role="button">Adicionar</a>
                 </div>
             </div>
         </div>

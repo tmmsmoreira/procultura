@@ -15,7 +15,7 @@
     <ol class="breadcrumb">
         <li><a href="/admin"><i class="fa fa-dashboard"></i> Home</a></li>
         <li>Páginas</li>
-        <li>Empregos</li>
+        <li>Emprego</li>
         <li class="active">Adicionar</li>
     </ol>
 </section>
@@ -26,7 +26,7 @@
     <div class="row">
         <div class="col-xs-12">
             <div class="box">
-                <form role="form" method="POST" action="/admin/agenda">
+                <form role="form" method="POST" action="/admin/jobs">
                     {{ csrf_field() }}
 
                     <div class="box-body">

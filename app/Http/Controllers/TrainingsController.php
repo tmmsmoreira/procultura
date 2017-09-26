@@ -6,20 +6,26 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Employment;
+use App\Training;
 
-class EmploymentsController extends Controller
+class TrainingsController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $employments = Employment::all();
+        if ($request->is('admin/*')) {
+            $trainings = Training::get();
 
-        return view('admin/employments/list', compact('employments'));
+            return view('admin/trainings/index', compact('trainings'));
+        } else {
+            $trainings = Training::get();
+
+            return view('trainings/index', compact('trainings'));
+        }
     }
 
     /**
@@ -29,7 +35,7 @@ class EmploymentsController extends Controller
      */
     public function create()
     {
-        return view('admin/employments/create');
+        return view('admin/trainings/create');
     }
 
     /**

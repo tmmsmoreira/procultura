@@ -20,7 +20,8 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/terms-and-conditions', 'PagesController@terms');
     Route::get('/contacs', 'PagesController@home');
     Route::resource('events', 'AgendaController');
-    //Route::post('events/lazy', 'AgendaController@lazy');
+    Route::resource('jobs', 'JobsController');
+    Route::resource('trainings', 'TrainingsController');
     Route::post('subscribe', 'NewsletterController@store');
     Route::get('images/{filename}', 'PagesController@uploadedImages');
 });
@@ -39,6 +40,8 @@ Route::group(['middleware' => ['admin']], function() {
     Route::resource('admin/newsletter', 'NewsletterController');
     Route::post('admin/events/delete', 'AgendaController@multiDestroy');
     Route::resource('admin/events', 'AgendaController');
-    Route::resource('admin/employments', 'EmploymentsController');
-    Route::resource('admin/employments/delete', 'EmploymentsController@multiDestroy');
+    Route::resource('admin/jobs', 'JobsController');
+    Route::resource('admin/jobs/delete', 'JobsController@multiDestroy');
+    Route::resource('admin/trainings', 'TrainingsController');
+    Route::resource('admin/trainings/delete', 'TrainingsController@multiDestroy');
 });

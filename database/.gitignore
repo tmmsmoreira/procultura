@@ -1,3 +1,2 @@
 *.sqlite
-seeds/ProfilesTableSeeder.php
-seeds/UsersTableSeeder.php
+seeds/

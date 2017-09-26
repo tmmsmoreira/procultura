@@ -29,8 +29,8 @@
     			<div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
                         <li><a class="text-uppercase" href="/events">Agenda Cultural</a></li>
-                        <!--<li><a class="text-uppercase" href="">Emprego</a></li>
-                        <li><a class="text-uppercase" href="">Formação</a></li>-->
+                        <li><a class="text-uppercase" href="/jobs">Emprego</a></li>
+                        <li><a class="text-uppercase" href="/trainings">Formação</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
