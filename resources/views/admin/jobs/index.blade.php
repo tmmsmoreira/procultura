@@ -1,4 +1,5 @@
 @extends('admin.layouts.main')
+@include('commons.deletePopup')
 
 @section('required-css-files')
 <!-- DataTables -->

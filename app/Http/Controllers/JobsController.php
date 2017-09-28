@@ -18,8 +18,8 @@ class JobsController extends Controller
     protected $validator = [
         'title' => 'required|string|max:200',
         'description' => 'required|string|max:1500',
-        'location' => 'required|string'
-        //'image' => 'required|image|max:5000|dimensions:min_width=1280,min_height=720'
+        'location' => 'required|string',
+        'image' => 'required|image|max:5000|dimensions:min_width=1280,min_height=720'
     ];
 
     /**
@@ -80,7 +80,7 @@ class JobsController extends Controller
 
             $job->save();
 
-            return redirect('admin/jobs')->with('status', 'Event updated!');
+            return redirect('admin/jobs')->with('status', 'Job updated!');
         }
 
         return;
@@ -95,7 +95,7 @@ class JobsController extends Controller
     public function show(Request $request, $id)
     {
         $job = Job::find($id);
-        
+
         if ($request->is('admin/*')) {
             return view('admin/jobs/show', compact('job'));
         }
@@ -146,9 +146,9 @@ class JobsController extends Controller
                 $job->image = $this::storeImage($request->file('image'));
             }
 
-            $event->save();
+            $job->save();
 
-            return redirect('admin/jobs')->with('status', 'Event updated!');
+            return redirect('admin/jobs')->with('status', 'Job updated!');
         }
 
         return;
@@ -165,7 +165,7 @@ class JobsController extends Controller
         if ($request->is('admin/*')) {
             $job = Job::destroy($id);
 
-            return redirect('admin/jobs')->with('status', 'Event deleted!');
+            return redirect('admin/jobs')->with('status', 'Job deleted!');
         }
 
         return;

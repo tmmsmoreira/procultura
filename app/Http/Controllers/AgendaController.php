@@ -17,7 +17,7 @@ class AgendaController extends Controller
 {
     protected $validator = [
         'title' => 'required|string|max:200',
-        'description' => 'required|string|max:1500',
+        'description' => 'required|string|max:10000',
         'location' => 'required|string',
         'datetime' => 'required|datetime_interval',
         //'image' => 'required|image|max:5000|dimensions:min_width=1280,min_height=720'
@@ -44,7 +44,7 @@ class AgendaController extends Controller
                 return $q->where('title', 'like', "%" . $request->keyword . "%");
             })->when(!empty($request->date), function($q) use ($request) {
                 return $q->whereDate('start_datetime', '>=', Carbon::createFromFormat('d/m/Y H:i', $request->date . "00:00"));
-            })->get();
+            })->orderBy('created_at', 'desc')->limit(10)->get();
 
             return view('events/index', compact('events', 'locations'));
         }
