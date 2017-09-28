@@ -54,7 +54,7 @@
                         <div class="form-group">
                             <label for="imageUpload">Imagem</label>
                             <input type="file" id="imageUpload" name="image" />
-                            <p class="help-block">Example block-level help text here.</p>
+                            <p class="help-block"></p>
                         </div>
                     </div>
                     <div class="box-footer">

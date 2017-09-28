@@ -3,10 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Training;
+use DB;
+use Carbon\Carbon;
+use Image;
+use Response;
 
 class TrainingsController extends Controller
 {

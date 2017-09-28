@@ -8,8 +8,8 @@
 @stop
 
 @section('content')
-<div id="events" class="site-wrapper">
-    <section class="events-calendar">
+<div id="jobs" class="site-wrapper">
+    <section>
         <div class="container">
             <p class="h1 section-title">Emprego</p>
         </div>
@@ -25,19 +25,19 @@
                         <label class="sr-only" for="location">Location</label>
                         <select id="location" name="location" style="width:100%" class="form-control input-lg">
                             <option value="">Local...</option>
-
+                            @foreach($locations as $i=>$location)
+                            <option value="{{ $location->location }}"
+                                @if($location->location == app('request')->input('location'))
+                                    {{ 'selected' }}
+                                @endif
+                            >
+                                {{ $location->location }}
+                            </option>
+                        @endforeach
                         </select>
                     </div>
                     <div class="form-group col-sm-2">
-                        <div class="input-group date" data-provide="datepicker" data-date-format="dd/mm/yyyy">
-                            <input type="text" name="date" style="width:100%" class="form-control input-lg">
-                            <div class="input-group-addon">
-                                <span class="glyphicon glyphicon-th"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group col-sm-2">
-                        <button type="submit" style="width:100%" class="btn btn-default btn-lg">Procurar</button>
+                        <button id="submit" type="submit" style="width:100%" class="btn btn-default btn-lg">Procurar</button>
                     </div>
                 </div>
             </form>
@@ -74,18 +74,4 @@
 
     @yield('footer')
 </div>
-@stop
-
-@section('required-js-scripts')
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
-<script src="/plugins/datepicker/bootstrap-datepicker.js"></script>
-<script src="/plugins/datepicker/locales/bootstrap-datepicker.pt.js"></script>
-@stop
-
-@section('page-script')
-<script>
-    $(function () {
-        $('.datepicker').datepicker();
-    });
-</script>
 @stop

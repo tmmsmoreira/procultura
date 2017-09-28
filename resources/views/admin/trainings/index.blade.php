@@ -29,7 +29,7 @@
                     <table id="agenda-list" class="table table-striped table-bordered table-hover">
                         <thead>
                             <tr>
-                                <th>Nome</th>
+                                <th>Titulo</th>
                                 <th>Localização</th>
                                 <th>Criado em</th>
                             </tr>
@@ -38,7 +38,7 @@
                             @foreach($trainings as $training)
                             <tr>
                                 <td>{{ $training->name }}</td>
-                                <td>{{ $training->localy }}</td>
+                                <td>{{ $training->location }}</td>
                                 <td>{{ $training->created_at }}</td>
                             </tr>
                             @endforeach
