@@ -152,9 +152,9 @@ class AgendaController extends Controller
      */
     public function multiDestroy(Request $request)
     {
-        $event = Event::destroy($request->ids);
+        $events = Event::destroy($request->ids);
 
-        return $event;
+        return $events;
     }
 
     /**

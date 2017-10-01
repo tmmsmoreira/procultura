@@ -6,6 +6,7 @@ use File;
 use Image;
 use App\Event;
 use App\Job;
+use App\Training;
 
 class PagesController extends Controller
 {
@@ -18,38 +19,39 @@ class PagesController extends Controller
     {
         $events = Event::orderBy('created_at', 'desc')->limit(10)->get();
         $jobs = Job::orderBy('created_at', 'desc')->limit(3)->get();
+        $trainings = Training::orderBy('created_at', 'desc')->limit(3)->get();
 
-        return view('home', compact('events', 'jobs'));
+        return view('web/home', compact('events', 'jobs', 'trainings'));
     }
 
     public function about()
     {
-        return view('about');
+        return view('web/about');
     }
 
     public function whatWeDo()
     {
-        return view('whatwedo');
+        return view('web/whatwedo');
     }
 
     public function terms()
     {
-        return view('terms');
+        return view('web/terms');
     }
 
     public function ourPartners()
     {
-        return view('ourpartners');
+        return view('web/ourpartners');
     }
 
     public function bePartner()
     {
-        return view('bepartner');
+        return view('web/bepartner');
     }
 
     public function contacts()
     {
-        return view('contacts');
+        return view('web/contacts');
     }
 
     /*public function uploadedImages($filename)

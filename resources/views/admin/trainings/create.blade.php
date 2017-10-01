@@ -26,21 +26,30 @@
     <div class="row">
         <div class="col-xs-12">
             <div class="box">
-                <form role="form" method="POST" action="/admin/trainings">
+                @if (count($errors) > 0)
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+                <form role="form" method="POST" enctype="multipart/form-data" action="/admin/trainings">
                     {{ csrf_field() }}
 
                     <div class="box-body">
                         <div class="form-group">
                             <label for="titleInput">Título</label>
-                            <input type="text" class="form-control" id="titleInput" name="title" placeholder="Introduza o título"/>
+                            <input type="text" class="form-control" id="titleInput" name="title" placeholder="Introduza o título" value="{{ old('title') }}"/>
                         </div>
                         <div class="form-group">
                             <label for="descriptionTextarea">Descrição</label>
-                            <textarea class="form-control" rows=3 id="descriptionTextarea" name="description" placeholder="Introduza uma descrição"/></textarea>
+                            <textarea class="form-control" rows=20 id="descriptionTextarea" name="description" placeholder="Introduza uma descrição"/>{{ old('description') }}</textarea>
                         </div>
                         <div class="form-group">
                             <label for="locationInput">Localização</label>
-                            <input type="text" class="form-control" id="locationInput" name="location" placeholder="Introduza a localização"/>
+                            <input type="text" class="form-control" id="locationInput" name="location" placeholder="Introduza a localização" value="{{ old('location') }}"/>
                         </div>
                         <div class="form-group">
                             <label>Data de inicio e de fim:</label>
@@ -48,13 +57,13 @@
                                 <div class="input-group-addon">
                                     <i class="fa fa-clock-o"></i>
                                 </div>
-                                <input type="text" class="form-control pull-right" id="datetime" name="datetime">
+                                <input type="text" class="form-control pull-right" id="datetime" name="datetime" value="{{ old('datetime') }}">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="imageUpload">Imagem</label>
                             <input type="file" id="imageUpload" name="image" />
-                            <p class="help-block"></p>
+                            <p class="help-block">A dimensão mínima da imagem é de 1280x720 e não pode ultrapassar os 5Mb.</p>
                         </div>
                     </div>
                     <div class="box-footer">
@@ -85,8 +94,8 @@
             timePicker24Hour: true,
             autoApply: true,
             locale: {
-                "format": "DD/MM/YYYY HH:mm",
-                "separator": " - ",
+                "format": "DD-MM-YYYY HH:mm",
+                "separator": " / ",
                 "applyLabel": "Aplicar",
                 "cancelLabel": "Cancelar",
                 "fromLabel": "De",

@@ -1381,7 +1381,7 @@ body {
   font-size: 14px;
   line-height: 1.6;
   color: #636b6f;
-  background-color: #f5f8fa;
+  background-color: #f6f6f6;
 }
 
 input,
@@ -1429,7 +1429,7 @@ img {
 .img-thumbnail {
   padding: 4px;
   line-height: 1.6;
-  background-color: #f5f8fa;
+  background-color: #f6f6f6;
   border: 1px solid #ddd;
   border-radius: 0;
   -webkit-transition: all 0.2s ease-in-out;
@@ -2737,7 +2737,7 @@ th {
 }
 
 .table .table {
-  background-color: #f5f8fa;
+  background-color: #f6f6f6;
 }
 
 .table-condensed > thead > tr > th,
@@ -4653,7 +4653,7 @@ tbody.collapse.in {
 
 .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
   color: #555555;
-  background-color: #f5f8fa;
+  background-color: #f6f6f6;
   border: 1px solid #ddd;
   border-bottom-color: transparent;
   cursor: default;
@@ -4736,7 +4736,7 @@ tbody.collapse.in {
   .nav-tabs-justified > .active > a, .nav-tabs.nav-justified > .active > a,
   .nav-tabs-justified > .active > a:hover, .nav-tabs.nav-justified > .active > a:hover,
   .nav-tabs-justified > .active > a:focus, .nav-tabs.nav-justified > .active > a:focus {
-    border-bottom-color: #f5f8fa;
+    border-bottom-color: #f6f6f6;
   }
 }
 
@@ -5146,7 +5146,7 @@ tbody.collapse.in {
 
 .navbar-default {
   background-color: #fff;
-  border-color: #d3e0e9;
+  border-color: #dddddd;
 }
 
 .navbar-default .navbar-brand {
@@ -5195,7 +5195,7 @@ tbody.collapse.in {
 
 .navbar-default .navbar-collapse,
 .navbar-default .navbar-form {
-  border-color: #d3e0e9;
+  border-color: #dddddd;
 }
 
 .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
@@ -5666,7 +5666,7 @@ a.badge:hover, a.badge:focus {
   padding-bottom: 30px;
   margin-bottom: 30px;
   color: inherit;
-  background-color: #f5f8fa;
+  background-color: #f6f6f6;
 }
 
 .jumbotron h1,
@@ -5681,7 +5681,7 @@ a.badge:hover, a.badge:focus {
 }
 
 .jumbotron > hr {
-  border-top-color: #d3e0e9;
+  border-top-color: #dddddd;
 }
 
 .container .jumbotron,
@@ -5716,7 +5716,7 @@ a.badge:hover, a.badge:focus {
   padding: 4px;
   margin-bottom: 22px;
   line-height: 1.6;
-  background-color: #f5f8fa;
+  background-color: #f6f6f6;
   border: 1px solid #ddd;
   border-radius: 0;
   -webkit-transition: border 0.2s ease-in-out;
@@ -5999,7 +5999,7 @@ a.thumbnail.active {
   padding: 10px 15px;
   margin-bottom: -1px;
   background-color: #fff;
-  border: 1px solid #d3e0e9;
+  border: 1px solid #dddddd;
 }
 
 .list-group-item:first-child {
@@ -6488,17 +6488,17 @@ button.list-group-item-danger.active:focus {
 }
 
 .panel-default {
-  border-color: #d3e0e9;
+  border-color: #dddddd;
 }
 
 .panel-default > .panel-heading {
   color: #333333;
   background-color: #fff;
-  border-color: #d3e0e9;
+  border-color: #dddddd;
 }
 
 .panel-default > .panel-heading + .panel-collapse > .panel-body {
-  border-top-color: #d3e0e9;
+  border-top-color: #dddddd;
 }
 
 .panel-default > .panel-heading .badge {
@@ -6507,7 +6507,7 @@ button.list-group-item-danger.active:focus {
 }
 
 .panel-default > .panel-footer + .panel-collapse > .panel-body {
-  border-bottom-color: #d3e0e9;
+  border-bottom-color: #dddddd;
 }
 
 .panel-primary {

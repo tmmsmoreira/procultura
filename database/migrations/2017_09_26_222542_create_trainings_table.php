@@ -16,8 +16,10 @@ class CreateTrainingsTable extends Migration
         Schema::create('trainings', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
-            $table->string('description');
+            $table->string('description', 10000);
             $table->string('location');
+            $table->string('start_datetime');
+            $table->string('end_datetime');
             $table->string('image');
             //$table->integer('user_id')->unsigned()->index();
             //$table->foreign('user_id')->references('id')->on('users');

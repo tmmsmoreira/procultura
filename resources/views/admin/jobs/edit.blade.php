@@ -36,7 +36,7 @@
                     </div>
                 @endif
                 <form role="form" method="POST" enctype="multipart/form-data"
-                        action="{{ route('jobs.update', ['id' => $job->id]) }}">
+                        action="{{ route('admin.jobs.update', ['id' => $job->id]) }}">
                     {{ method_field('PUT') }}
                     {{ csrf_field() }}
 
@@ -48,7 +48,7 @@
                         </div>
                         <div class="form-group">
                             <label for="descriptionTextarea">Descrição</label>
-                            <textarea class="form-control" rows=3 id="descriptionTextarea" name="description"
+                            <textarea class="form-control" rows=20 id="descriptionTextarea" name="description"
                                 placeholder="Introduza uma descrição" />{{ $job->description }}</textarea>
                         </div>
                         <div class="form-group">

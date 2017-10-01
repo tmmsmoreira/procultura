@@ -46,7 +46,7 @@
                         </div>
                         <div class="form-group">
                             <label for="descriptionTextarea">Descrição</label>
-                            <textarea class="form-control" rows=3 id="descriptionTextarea" name="description" placeholder="Introduza uma descrição"/>{{ old('description') }}</textarea>
+                            <textarea class="form-control" rows=20 id="descriptionTextarea" name="description" placeholder="Introduza uma descrição"/>{{ old('description') }}</textarea>
                         </div>
                         <div class="form-group">
                             <label for="locationInput">Localização</label>

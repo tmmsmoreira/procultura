@@ -1,6 +1,6 @@
-@include('footer')
+@include('web.footer')
 
-@extends('layouts.main')
+@extends('web.layouts.main')
 
 @section('content')
 <div id="be-partner" class="site-wrapper">

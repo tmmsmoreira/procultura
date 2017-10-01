@@ -22,36 +22,17 @@ class TrainingsController extends Controller
      */
     public function index(Request $request)
     {
-        if ($request->is('admin/*')) {
-            $trainings = Training::get();
+        $locations = Training::select('location')->distinct()->get();
 
-            return view('admin/trainings/index', compact('trainings'));
-        } else {
-            $trainings = Training::get();
+        $trainings = Training::when(!empty($request->location), function($q) use ($request) {
+            return $q->where('location', $request->location);
+        })->when(!empty($request->keyword), function($q) use ($request) {
+            return $q->where('title', 'like', "%" . $request->keyword . "%");
+        })->when(!empty($request->date), function($q) use ($request) {
+            return $q->whereDate('start_datetime', '>=', Carbon::createFromFormat('d/m/Y H:i', $request->date . "00:00"));
+        })->orderBy('created_at', 'desc')->limit(10)->get();
 
-            return view('trainings/index', compact('trainings'));
-        }
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        return view('admin/trainings/create');
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        return $request->all();
+        return view('web/trainings/index', compact('trainings', 'locations'));
     }
 
     /**
@@ -62,40 +43,8 @@ class TrainingsController extends Controller
      */
     public function show($id)
     {
-        //
-    }
+        $training = Training::find($id);
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        return view('web/trainings/show', compact('training'));
     }
 }

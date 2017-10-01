@@ -1,6 +1,6 @@
-@include('footer')
+@include('web.footer')
 
-@extends('layouts.main')
+@extends('web.layouts.main')
 
 @section('content')
 <div id="home" class="site-wrapper">
@@ -32,7 +32,7 @@
                                         </div>
                                     </div>
                                     <div class="media-body">
-                                        <a href="events/{{ $event->id }}">
+                                        <a href="{{ route('events.show', ['event' => $event->id]) }}">
                                             <h4 class="title">
                                                 @if (strlen($event->title) > 50)
                                                     {{ substr($event->title, 0, 50) . "..." }}
@@ -81,7 +81,6 @@
                 @foreach($jobs as $i=>$job)
                 <div class="col-sm-4">
                     <div class="fig-hover-item" style="background-image:url('{{ asset('storage/' . $job->image) }}');">
-                        <a href="" class="full-link"></a>
                         <div class="fig-hover-item-content text-center">
                             <div class="overlay">
                                 <div class="overlay-color"></div>
@@ -93,7 +92,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <a href="" class="full-link"></a>
+                                <a href="{{ route('jobs.show', ['job' => $job->id]) }}" class="full-link"></a>
                             </div>
                         </div>
                     </div>
@@ -124,70 +123,32 @@
             <div class="row">
                 <h1 class="section-title white">Formação</h1>
             </div>
-            <!--<div class="row">
-                <div class="col-sm-4">
-                    <div class="fig-hover-item img-circle" style="background-image:url(images/job1.jpg);">
-                        <a href="" class="full-link"></a>
-                        <div class="fig-hover-item-content text-center">
-                            <div class="overlay img-circle">
-                                <div class="overlay-color img-circle"></div>
-                                <div class="overlay-content">
-                                    <div class="vertical-center" style="height:100%">
-                                        <div class="centered">
-                                            <h3>Job 1</h3>
-                                            <h4>Lisboa</h4>
-                                            View project
-                                        </div>
-                                    </div>
-                                </div>
-                                <a href="" class="full-link"></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="fig-hover-item img-circle" style="background-image:url(images/job2.jpg);">
-                        <a href="" class="full-link"></a>
-                        <div class="fig-hover-item-content text-center">
-                            <div class="overlay img-circle">
-                                <div class="overlay-color img-circle"></div>
-                                <div class="overlay-content">
-                                    <div class="vertical-center" style="height:100%">
-                                        <div class="centered">
-                                            <h3>Job 1</h3>
-                                            <h4>Lisboa</h4>
-                                            View project
-                                        </div>
-                                    </div>
-                                </div>
-                                <a href="" class="full-link"></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="fig-hover-item img-circle" style="background-image:url(images/job3.jpg);">
-                        <a href="" class="full-link"></a>
-                        <div class="fig-hover-item-content text-center">
-                            <div class="overlay img-circle">
-                                <div class="overlay-color img-circle"></div>
-                                <div class="overlay-content">
-                                    <div class="vertical-center" style="height:100%">
-                                        <div class="centered">
-                                            <h3>Job 1</h3>
-                                            <h4>Lisboa</h4>
-                                            View project
-                                        </div>
-                                    </div>
-                                </div>
-                                <a href="" class="full-link"></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>-->
             <div class="row">
-
+                @foreach($trainings as $i=>$training)
+                <div class="col-sm-4">
+                    <div class="fig-hover-item" style="background-image:url('{{ asset('storage/' . $training->image) }}');">
+                        <div class="fig-hover-item-content text-center">
+                            <div class="overlay">
+                                <div class="overlay-color"></div>
+                                <div class="overlay-content">
+                                    <div class="vertical-center" style="height:100%">
+                                        <div class="centered">
+                                            <h3>{{ $training->title }}</h3>
+                                            <h4>{{ $training->location }}</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a href="{{ route('trainings.show', ['training' => $training->id]) }}" class="full-link"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+            <div class="row">
+                <div class="col-sm-12 text-center">
+                    <a href="{{ route('trainings.index') }}" style="margin-top: 30px" class="btn btn-lg btn-default">Ver mais</a>
+                </div>
             </div>
         </div>
     </section>

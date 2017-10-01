@@ -40,7 +40,7 @@ class AgendaController extends Controller
             return $q->whereDate('start_datetime', '>=', Carbon::createFromFormat('d/m/Y H:i', $request->date . "00:00"));
         })->orderBy('created_at', 'desc')->limit(10)->get();
 
-        return view('events/index', compact('events', 'locations'));
+        return view('web/events/index', compact('events', 'locations'));
     }
 
     /**
@@ -53,7 +53,7 @@ class AgendaController extends Controller
     {
         $event = Event::find($id);
 
-        return view('events/show', compact('event'));
+        return view('web/events/show', compact('event'));
     }
 
     /**
@@ -88,9 +88,8 @@ class AgendaController extends Controller
     public function search(Request $request)
     {
         $locations = Event::select('location')->distinct()->get();
-
         $events = Event::where('location', $request->location)->get();
 
-        return view('events/index', compact('events', 'locations'));
+        return view('web/events/index', compact('events', 'locations'));
     }
 }
