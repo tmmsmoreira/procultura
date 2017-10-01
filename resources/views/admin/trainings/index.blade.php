@@ -46,7 +46,7 @@
                     </table>
                 </div>
                 <div class="box-footer">
-                    <a href="{{ route('trainings.create') }}" class="btn btn-info" role="button">Adicionar</a>
+                    <a href="{{ route('admin.trainings.create') }}" class="btn btn-info" role="button">Adicionar</a>
                 </div>
             </div>
         </div>

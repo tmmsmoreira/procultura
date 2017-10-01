@@ -16,7 +16,7 @@ use Response;
 class JobsController extends Controller
 {
     protected $validator = [
-        'title' => 'required|string|max:200',
+        'title' => 'bail|required|string|max:200',
         'description' => 'required|string|max:1500',
         'location' => 'required|string',
         'image' => 'required|image|max:5000|dimensions:min_width=1280,min_height=720'

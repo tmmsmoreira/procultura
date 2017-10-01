@@ -51,7 +51,7 @@
                     </table>
                 </div>
                 <div class="box-footer">
-                    <a href="{{ route('events.create') }}" class="btn btn-info" id="add_button">Adicionar</a>
+                    <a href="{{ route('admin.events.create') }}" class="btn btn-info" id="add_button">Adicionar</a>
                     <button class="btn btn-warning" disabled id="edit_button" role="button">Editar</button>
                     <button class="btn btn-danger" disabled id="delete_button" role="button" data-toggle="modal"
                         data-target="#delete_modal" data-link="{{ url('/admin/events/delete') }}">Apagar</button>

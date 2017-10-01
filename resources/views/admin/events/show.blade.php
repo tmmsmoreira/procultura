@@ -21,7 +21,7 @@
     <ol class="breadcrumb">
         <li><a href="{{ route('admin') }}"><i class="fa fa-dashboard"></i> Home</a></li>
         <li>Páginas</li>
-        <li><a href="{{ route('events.index') }}">Agenda Cultural</a></li>
+        <li><a href="{{ route('admin.events.index') }}">Agenda Cultural</a></li>
         <li class="active">{{ $event->title }}</li>
     </ol>
 </section>
@@ -57,10 +57,10 @@
                     </div>
                 </div>
                 <div class="box-footer">
-                    <a href="{{ route('events.edit', $event->id) }}" class="btn btn-warning" id="edit_button">Editar</a>
+                    <a href="{{ route('admin.events.edit', $event->id) }}" class="btn btn-warning" id="edit_button">Editar</a>
                     <button type="button" class="btn btn-danger" data-toggle="modal"
                         data-target="#delete_modal" data-link="{{ route('events.destroy', $event->id) }}">Delete</button>
-                    <a href="{{ route('events.index') }}" class="btn btn-default">Cancelar</a>
+                    <a href="{{ route('admin.events.index') }}" class="btn btn-default">Cancelar</a>
                 </div>
             </div>
         </div>

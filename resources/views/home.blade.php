@@ -77,70 +77,33 @@
             <div class="row">
                 <h1 class="section-title">Emprego</h1>
             </div>
-            <!--<div class="row">
-                <div class="col-sm-4">
-                    <div class="fig-hover-item" style="background-image:url(images/job1.jpg);">
-                        <a href="" class="full-link"></a>
-                        <div class="fig-hover-item-content text-center">
-                            <div class="overlay">
-                                <div class="overlay-color"></div>
-                                <div class="overlay-content">
-                                    <div class="vertical-center" style="height:100%">
-                                        <div class="centered">
-                                            <h3>Job 1</h3>
-                                            <h4>Lisboa</h4>
-                                            View project
-                                        </div>
-                                    </div>
-                                </div>
-                                <a href="" class="full-link"></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="fig-hover-item" style="background-image:url(images/job2.jpg);">
-                        <a href="" class="full-link"></a>
-                        <div class="fig-hover-item-content text-center">
-                            <div class="overlay">
-                                <div class="overlay-color"></div>
-                                <div class="overlay-content">
-                                    <div class="vertical-center" style="height:100%">
-                                        <div class="centered">
-                                            <h3>Job 1</h3>
-                                            <h4>Lisboa</h4>
-                                            View project
-                                        </div>
-                                    </div>
-                                </div>
-                                <a href="" class="full-link"></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="fig-hover-item" style="background-image:url(images/job3.jpg);">
-                        <a href="" class="full-link"></a>
-                        <div class="fig-hover-item-content text-center">
-                            <div class="overlay">
-                                <div class="overlay-color"></div>
-                                <div class="overlay-content">
-                                    <div class="vertical-center" style="height:100%">
-                                        <div class="centered">
-                                            <h3>Job 1</h3>
-                                            <h4>Lisboa</h4>
-                                            View project
-                                        </div>
-                                    </div>
-                                </div>
-                                <a href="" class="full-link"></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>-->
             <div class="row">
-
+                @foreach($jobs as $i=>$job)
+                <div class="col-sm-4">
+                    <div class="fig-hover-item" style="background-image:url('{{ asset('storage/' . $job->image) }}');">
+                        <a href="" class="full-link"></a>
+                        <div class="fig-hover-item-content text-center">
+                            <div class="overlay">
+                                <div class="overlay-color"></div>
+                                <div class="overlay-content">
+                                    <div class="vertical-center" style="height:100%">
+                                        <div class="centered">
+                                            <h3>{{ $job->title }}</h3>
+                                            <h4>{{ $job->location }}</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a href="" class="full-link"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+            <div class="row">
+                <div class="col-sm-12 text-center">
+                    <a href="{{ route('jobs.index') }}" style="margin-top: 30px" class="btn btn-lg btn-primary">Ver mais</a>
+                </div>
             </div>
           <!-- /END THE FEATURETTES -->
         </div>

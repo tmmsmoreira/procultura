@@ -11,7 +11,7 @@
 |
 */
 // ProCultura
-Route::group(['middleware' => ['web']], function () {
+//Route::group(['middleware' => ['web']], function () {
     Route::get('/', 'PagesController@home');
     Route::get('/about', 'PagesController@about');
     Route::get('/what-we-do', 'PagesController@whatWeDo');
@@ -19,12 +19,22 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/be-partner', 'PagesController@bePartner');
     Route::get('/terms-and-conditions', 'PagesController@terms');
     Route::get('/contacs', 'PagesController@home');
-    Route::resource('events', 'AgendaController');
-    Route::resource('jobs', 'JobsController');
-    Route::resource('trainings', 'TrainingsController');
+
+    Route::resource('events', 'AgendaController', ['only' => [
+        'index', 'show'
+    ]]);
+
+    Route::resource('jobs', 'JobsController', ['only' => [
+        'index', 'show'
+    ]]);
+
+    Route::resource('trainings', 'TrainingsController', ['only' => [
+        'index', 'show'
+    ]]);
+    
     Route::post('subscribe', 'NewsletterController@store');
     Route::get('images/{filename}', 'PagesController@uploadedImages');
-});
+//});
 
 Auth::routes();
 /*Route::group(['middleware' => ['guest']], function() {
@@ -32,20 +42,23 @@ Auth::routes();
 });*/
 
 // Admin
-Route::group(['middleware' => ['admin']], function() {
-    Route::get('admin', 'AdminController@home')->name('admin');
-    Route::get('admin/users', 'UsersController@index')->name('users');
+Route::group([
+        'middleware' => ['admin'],
+        'namespace' => 'Admin',
+        'prefix' => 'admin'], function() {
+    Route::get('/', 'AdminController@home')->name('admin');
+    Route::get('users', 'UsersController@index')->name('admin.users.index');
 
-    Route::post('admin/newsletter/delete', 'NewsletterController@multiDestroy');
-    Route::get('admin/newsletter/export', 'NewsletterController@export');
-    Route::resource('admin/newsletter', 'NewsletterController');
+    Route::post('newsletter/delete', 'NewsletterController@multiDestroy')->name('admin.newsletter.multi_destroy');
+    Route::get('newsletter/export', 'NewsletterController@export')->name('admin.newsletter.export');
+    Route::resource('newsletter', 'NewsletterController', [ 'as' => 'admin']);
 
-    Route::resource('admin/events', 'AgendaController');
-    Route::post('admin/events/delete', 'AgendaController@multiDestroy');
+    Route::resource('events', 'AgendaController', [ 'as' => 'admin']);
+    Route::post('events/delete', 'AgendaController@multiDestroy')->name('admin.events.export');
 
-    Route::resource('admin/jobs', 'JobsController');
-    Route::post('admin/jobs/delete', 'JobsController@multiDestroy');
+    Route::resource('jobs', 'JobsController', [ 'as' => 'admin']);
+    Route::post('jobs/delete', 'JobsController@multiDestroy')->name('admin.jobs.multi_destroy');
 
-    Route::resource('admin/trainings', 'TrainingsController');
-    Route::post('admin/trainings/delete', 'TrainingsController@multiDestroy');
+    Route::resource('trainings', 'TrainingsController', [ 'as' => 'admin']);
+    Route::post('trainings/delete', 'TrainingsController@multiDestroy')->name('admin.trainings.multi_destroy');
 });

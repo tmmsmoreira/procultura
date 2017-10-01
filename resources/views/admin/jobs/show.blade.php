@@ -21,7 +21,7 @@
     <ol class="breadcrumb">
         <li><a href="{{ route('admin') }}"><i class="fa fa-dashboard"></i> Home</a></li>
         <li>Páginas</li>
-        <li><a href="{{ route('jobs.index') }}">Emprego</a></li>
+        <li><a href="{{ route('admin.jobs.index') }}">Emprego</a></li>
         <li class="active">{{ $job->title }}</li>
     </ol>
 </section>
@@ -53,10 +53,10 @@
                     </div>
                 </div>
                 <div class="box-footer">
-                    <a href="{{ route('jobs.edit', $job->id) }}" class="btn btn-warning" id="edit_button">Editar</a>
+                    <a href="{{ route('admin.jobs.edit', $job->id) }}" class="btn btn-warning" id="edit_button">Editar</a>
                     <button type="button" class="btn btn-danger" data-toggle="modal"
-                        data-target="#delete_modal" data-link="{{ route('jobs.destroy', $job->id) }}">Delete</button>
-                    <a href="{{ route('jobs.index') }}" class="btn btn-default">Cancelar</a>
+                        data-target="#delete_modal" data-link="{{ route('admin.jobs.destroy', $job->id) }}">Delete</button>
+                    <a href="{{ route('admin.jobs.index') }}" class="btn btn-default">Cancelar</a>
                 </div>
             </div>
         </div>

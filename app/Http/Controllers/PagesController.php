@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use File;
 use Image;
 use App\Event;
+use App\Job;
 
 class PagesController extends Controller
 {
@@ -16,8 +17,9 @@ class PagesController extends Controller
     public function home()
     {
         $events = Event::orderBy('created_at', 'desc')->limit(10)->get();
+        $jobs = Job::orderBy('created_at', 'desc')->limit(3)->get();
 
-        return view('home', compact('events'));
+        return view('home', compact('events', 'jobs'));
     }
 
     public function about()

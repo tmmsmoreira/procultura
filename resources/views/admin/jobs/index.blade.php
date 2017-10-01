@@ -49,7 +49,7 @@
                     </table>
                 </div>
                 <div class="box-footer">
-                    <a href="{{ route('jobs.create') }}" class="btn btn-info" role="button">Adicionar</a>
+                    <a href="{{ route('admin.jobs.create') }}" class="btn btn-info" role="button">Adicionar</a>
                     <button class="btn btn-warning" disabled id="edit_button" role="button">Editar</button>
                     <button class="btn btn-danger" disabled id="delete_button" role="button" data-toggle="modal"
                         data-target="#delete_modal" data-link="{{ url('/admin/jobs/delete') }}">Apagar</button>

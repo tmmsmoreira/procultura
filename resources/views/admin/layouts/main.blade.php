@@ -242,28 +242,28 @@
                 </a>
             </li>
             <li class="{{ Helpers::setActiveForRoute('admin/users') }}">
-                <a href="{{ route('users') }}">
+                <a href="{{ route('admin.users.index') }}">
                     <i class="fa fa-link"></i> <span>Utilizadores</span>
                 </a>
             </li>
             <li class="{{ Helpers::setActiveForRoute('admin/newsletter') }}">
-                <a href="{{ route('newsletter.index') }}">
+                <a href="{{ route('admin.newsletter.index') }}">
                     <i class="fa fa-link"></i> <span>Newsletter</span>
                 </a>
             </li>
             <li class="header text-uppercase">Páginas</li>
             <li class="{{ Helpers::setActiveForRoute('admin/events') }}">
-                <a href="{{ route('events.index') }}">
+                <a href="{{ route('admin.events.index') }}">
                     <i class="fa fa-link"></i> <span>Agenda Cultural</span>
                 </a>
             </li>
             <li class="{{ Helpers::setActiveForRoute('admin/jobs') }}">
-                <a href="{{ route('jobs.index') }}">
+                <a href="{{ route('admin.jobs.index') }}">
                     <i class="fa fa-link"></i> <span>Emprego</span>
                 </a>
             </li>
             <li class="{{ Helpers::setActiveForRoute('admin/trainings') }}">
-                <a href="{{ route('trainings.index') }}">
+                <a href="{{ route('admin.trainings.index') }}">
                     <i class="fa fa-link"></i> <span>Formação</span>
                 </a>
             </li>

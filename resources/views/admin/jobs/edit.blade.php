@@ -15,7 +15,7 @@
     <ol class="breadcrumb">
         <li><a href="{{ route('admin') }}"><i class="fa fa-dashboard"></i> Home</a></li>
         <li>Páginas</li>
-        <li><a href="{{ route('jobs.index') }}">Emprego</a></li>
+        <li><a href="{{ route('admin.jobs.index') }}">Emprego</a></li>
         <li class="active">Editar Proposta de Emprego</li>
     </ol>
 </section>
@@ -71,8 +71,8 @@
                     </div>
                     <div class="box-footer">
                         <button type="submit" class="btn btn-success" role="button">Actualizar</button>
-                        <a href="{{ route('jobs.index') }}" class="btn btn-default">Cancelar</a>
-                    </div>
+                        <a href="{{ route('admin.jobs.index') }}" class="btn btn-default">Cancelar</a>
+                    </diva>
                 </form>
             </div>
         </div>
